@@ -1,6 +1,6 @@
 /**
  * Calculates the distance between two horizontal grid dots and two vertical grid dots
- * @param {HTMLElement} gridDot Dot on which the user clicks
+ * @param {HTMLElement} gridDot Dot on which the user drops the widget
  * @returns {Object} Horizontal length and vertical length
  */
 export const getGridLengthUnits = gridDot => {
@@ -27,26 +27,42 @@ export const getGridLengthUnits = gridDot => {
 
   return gridLength
 }
-/**
-* @param {HTMLElement} gridDot Dot on which the user clicks
-* @param {Number} minWidth Minimum length (distances between horizontal dots) of the widget
-* @param {Number} minHeight Minimum height (distances between vertical dots) of the widget
-* @returns {Object} Widget width, height and position (DOMRect)
-*/
-export const getWidthHeightPositionOfWidget = (gridDot, minWidth = 2, minHeight = 2) => {
-  const { horizontalLength, verticalLength } = getGridLengthUnits(gridDot)
+
+export const getWidthHeightPositionOfWidget = (dotCoordinates, minWidth = 2, minHeight = 2) => {
+  const grid = document.querySelector('#grid')
+  const gridDot = grid.children[dotCoordinates.y].children[dotCoordinates.x]
   const gridDotRect = gridDot.getBoundingClientRect()
+
+  const { horizontalLength, verticalLength } = getGridLengthUnits(gridDot)
 
   return {
     widgetWidth: Math.round((horizontalLength * minWidth) + (gridDotRect.width * (minWidth - 1))),
     widgetHeight: Math.round((verticalLength * minHeight) + (gridDotRect.height * (minHeight - 1))),
-    widgetPosition: {
-      bottom: gridDotRect.bottom - gridDotRect.height,
-      top: gridDotRect.top + gridDotRect.height,
-      left: gridDotRect.left + gridDotRect.width,
-      right: gridDotRect.right - gridDotRect.width,
-      x: gridDotRect.x + gridDotRect.width,
-      y: gridDotRect.y + gridDotRect.height
-    }
+    x: gridDotRect.left + gridDotRect.width,
+    y: gridDotRect.top + gridDotRect.height
   }
+}
+
+export const getWidgetDotCoordinates = (gridDot, minWidth = 2, minHeight = 2) => {
+    // Get index of the clicked dot in row and its row
+    let indexOfClickedDot = 0
+    let indexOfClickedRow = 0
+    let gridDotRow = gridDot.parentElement
+
+    for (let i = 0; (gridDot = gridDot.previousElementSibling); i++) {
+      indexOfClickedDot++
+    }
+
+    for (let i = 0; (gridDotRow = gridDotRow.previousElementSibling); i++) {
+      indexOfClickedRow++
+    }
+
+    return { x: indexOfClickedDot, y: indexOfClickedRow }
+}
+
+export const checkCanDrop = (gridSize, dropCoordinates, minWidth = 2, minHeight = 2) => {
+  const widthIsOkay = dropCoordinates.x + 1 <= gridSize.width - minWidth
+  const heightIsOkay = dropCoordinates.y + 1 <= gridSize.height - minHeight
+
+  return widthIsOkay && heightIsOkay
 }

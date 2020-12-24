@@ -26,6 +26,7 @@ const DashboardNavbar = () => {
     },
     {
       label: user?.username,
+      onClick: () => null
       // href: '/auth/sign-up'
     }
   ]), [user])

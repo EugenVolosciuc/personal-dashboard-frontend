@@ -1,18 +1,37 @@
 @import 'styles/variables.scss';
 
 .menu-item {
-  @apply cursor-pointer;
-  
-  &.active {
-    @apply border-purple-500 border-l-4;
-  }
+  @apply cursor-pointer flex justify-between items-center;
+}
 
-  &.side {
-    transition: border-radius $transitionMedium;
-    @apply py-3 px-4;
+.active {
+  @apply border-purple-500 border-l-4;
+}
+
+.side {
+  transition: border-radius $transitionMedium;
+  @apply py-3 px-4;
+}
+
+.top {
+  @apply ml-4;  
+}
+
+.sub-items {
+  @apply pl-4;
+}
+
+.arrow {
+  transition: color $transitionFast, transform $transitionFast;
+  @apply hover:text-purple-500;
+
+  &.rotated {
+    transform: rotate(180deg);
   }
-  
-  &.top {
-    @apply ml-4;  
-  }
+}
+
+.draggable-item-container {
+  height: 48px;
+
+  @apply ml-4 flex items-center relative;
 }

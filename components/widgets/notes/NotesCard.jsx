@@ -14,7 +14,6 @@ const NotesCard = () => {
 
   return (
     <Card
-      style={{ height: 600 }}
       title="Notes"
       extra={<FontAwesomeIcon onClick={() => toggleNotesModal(true)} icon={faPlus} className="icon-hover icon-hover-primary" />}
     >

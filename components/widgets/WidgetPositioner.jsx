@@ -1,16 +1,15 @@
 import React from 'react'
 
 const WidgetPositioner = ({ children, position }) => {
-
   const positionStyle = {
-    left: Math.round(position.coordinates.x),
-    top: Math.round(position.coordinates.y),
-    width: Math.round(position.measurements.width),
-    height: Math.round(position.measurements.height)
+    left: Math.round(position.x),
+    top: Math.round(position.y),
+    width: Math.round(position.widgetWidth),
+    height: Math.round(position.widgetHeight)
   }
 
   return (
-    <div className="absolute" style={positionStyle}>
+    <div className="fixed" style={positionStyle}>
       {children}
     </div>
   )

@@ -1,32 +1,35 @@
-  
-import React, { useContext } from 'react'
-import isNil from 'lodash/isNil'
+
+import React from 'react'
 
 import WidgetPositioner from 'components/widgets/WidgetPositioner'
 import WIDGET_LIST from 'constants/WIDGET_LIST'
 import Grid from 'components/gridSystem/Grid'
-import dashboardEditModeContext from 'utils/contexts/dashboardEditModeContext'
+import useDashboardEditMode from 'utils/hooks/useDashboardEditMode'
+import useWidgetPositions from 'utils/hooks/useWidgetPositions'
+import { getWidthHeightPositionOfWidget } from 'utils/functions/grid'
 
-// TODO: add edit mode context and save user's widgetPositions to context
-const WidgetDropZone = ({ widgetPositions }) => {
-    const { editMode, setEditMode } = useContext(dashboardEditModeContext)
-    
-    return (
-        <div className="widget-drop-zone">
-            {editMode && <Grid />}
-            {
-                WIDGET_LIST.map(widget => {
-                    if (!isNil(widgetPositions[widget.title.toLowerCase()])) {
-                        return (
-                            <WidgetPositioner key={`${widget.title} widget`} position={widgetPositions[widget.title.toLowerCase()]}>
-                                <widget.component />
-                            </WidgetPositioner>
-                        )
-                    }
-                })
-            }
-        </div>
-    )
+const WidgetDropZone = () => {
+  const { dashboardEditMode } = useDashboardEditMode()
+  const { widgetPositions } = useWidgetPositions()
+
+  return (
+    <div className="relative w-full h-full">
+      <Grid isShown={dashboardEditMode} />
+      {widgetPositions && widgetPositions.map(position => {
+        const widget = WIDGET_LIST[position.title]
+        const widthHeightPosition = getWidthHeightPositionOfWidget({ x: position.x, y: position.y })
+
+        return (
+          <WidgetPositioner
+            key={`${position.x}-${position.y}-${position.title}`}
+            position={widthHeightPosition}
+          >
+            <widget.component />
+          </WidgetPositioner>
+        )
+      })}
+    </div>
+  )
 }
 
 export default WidgetDropZone

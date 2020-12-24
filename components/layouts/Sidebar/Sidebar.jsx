@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react'
 
 import styles from '../styles/Sidebar.module.scss'
 import SidebarToggle from 'components/layouts/Sidebar/SidebarToggle'
-import { MenuItem } from 'components/ui'
+import { MenuItem, NestedMenuItem } from 'components/ui'
+import WIDGET_LIST from 'constants/WIDGET_LIST'
 // import { useAuth } from 'utils/contexts/auth'
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -11,6 +12,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const menuItems = useMemo(() => ([
     {
       label: 'Widgets',
+      subItems: Object.values(WIDGET_LIST)
       // href: '/auth/sign-up'
     }
   ]), [])
@@ -24,7 +26,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         </div>
 
         <div className={styles['menu-container']}>
-          {menuItems.map((item, index) => <MenuItem key={item.label || `top-menu-item-${index}`} menuData={item} menuType="side" className="font-bold" />)}
+          {menuItems.map((item, index) => {
+            const hasSubItems = item.subItems
+
+            if (hasSubItems) return <NestedMenuItem key={item.label} menuData={item} menuType="side" className="font-bold" />
+
+            return <MenuItem key={item.label || `top-menu-item-${index}`} menuData={item} menuType="side" className="font-bold" />
+          })}
         </div>
       </div>
     </div>

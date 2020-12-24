@@ -1,15 +1,17 @@
 import { useState, createContext } from 'react'
 
 const dashboardEditModeContext = createContext({
-  editMode: false,
-  setEditMode: () => null
+  dashboardEditMode: false,
+  toggleDashboardEditMode: () => console.log("DOES IT FIRE THIS PIECE OF CRAP?...")
 })
 
 export const DashboardEditModeProvider = ({ children }) => {
-  const [editMode, setEditMode] = useState(false)
+  const [dashboardEditMode, setDashboardEditMode] = useState(false)
+
+  const toggleDashboardEditMode = () => setDashboardEditMode(!dashboardEditMode)
 
   return (
-    <dashboardEditModeContext.Provider value={{ editMode, setEditMode }}>
+    <dashboardEditModeContext.Provider value={{ dashboardEditMode, toggleDashboardEditMode }}>
       {children}
     </dashboardEditModeContext.Provider>
   )

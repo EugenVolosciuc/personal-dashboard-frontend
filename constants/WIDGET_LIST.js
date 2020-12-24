@@ -1,7 +1,7 @@
 import { NotesCard } from 'components/widgets/cards'
 
-const WIDGET_LIST = [
-  // TODO: Custom card
+const WIDGET_LIST = {
+    // TODO: Custom card
   // {
   //     title: 'Todos',
   //     component: TodosCard
@@ -10,10 +10,10 @@ const WIDGET_LIST = [
   //     title: 'Expenses',
   //     component: ExpensesCard
   // },
-  {
-      title: 'Notes',
-      component: NotesCard
+  notes: {
+    title: 'Notes',
+    component: NotesCard
   }
-]
+}
 
 export default WIDGET_LIST
