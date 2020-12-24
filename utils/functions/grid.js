@@ -60,9 +60,24 @@ export const getWidgetDotCoordinates = (gridDot, minWidth = 2, minHeight = 2) =>
     return { x: indexOfClickedDot, y: indexOfClickedRow }
 }
 
-export const checkCanDrop = (gridSize, dropCoordinates, minWidth = 2, minHeight = 2) => {
+export const checkCanDrag = (itemTitle, widgetPositions) => {
+  if (widgetPositions) return !widgetPositions.find(position => position.title === itemTitle.toLowerCase())
+
+  return true
+}
+
+export const checkCanDrop = (gridSize, dropCoordinates, widgetPositions, minWidth = 2, minHeight = 2) => {
+  // Check that the dragged widget isn't positioned outside the boundaries of the grid
   const widthIsOkay = dropCoordinates.x + 1 <= gridSize.width - minWidth
   const heightIsOkay = dropCoordinates.y + 1 <= gridSize.height - minHeight
 
-  return widthIsOkay && heightIsOkay
+  // Check that the dragged widget doesn't overlap with another widget
+  const widgetsOverlap = widgetPositions.find(position => {
+    const xAxisOverlaps = dropCoordinates.x > position.x - minWidth && dropCoordinates.x < position.x + minWidth
+    const yAxisOverlaps = dropCoordinates.y > position.y - minHeight && dropCoordinates.y < position.y + minHeight
+
+    return xAxisOverlaps && yAxisOverlaps
+  })
+
+  return widthIsOkay && heightIsOkay && !widgetsOverlap
 }

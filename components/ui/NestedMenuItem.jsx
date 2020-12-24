@@ -11,8 +11,6 @@ const NestedMenuItem = ({ menuData, menuType = 'side', className = '' }) => {
     onClick: () => setIsOpen(!isOpen)
   }
 
-  console.log("IS OPEN", isOpen)
-
   return (
     <div className="w-full">
       <MenuItem menuData={parentMenuData} menuType={menuType} className={className} isParent isOpen={isOpen} />

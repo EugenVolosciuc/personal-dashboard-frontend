@@ -10,7 +10,7 @@ import { getWidgetDotCoordinates, checkCanDrop } from 'utils/functions/grid'
 
 const GridDot = () => {
   const { gridSize } = useGridSize()
-  const { mutate } = useWidgetPositions()
+  const { widgetPositions, mutate } = useWidgetPositions()
 
   const [collectedProps, drop] = useDrop({
     accept: DND_TYPES.WIDGET,
@@ -25,7 +25,7 @@ const GridDot = () => {
       const dropTarget = document.querySelector(`#${monitor.targetId}`)
 
       const dotCoordinates = getWidgetDotCoordinates(dropTarget)
-      return checkCanDrop(gridSize, dotCoordinates) // TODO: change minWidth and minHeight to be specified by the widget
+      return checkCanDrop(gridSize, dotCoordinates, widgetPositions) // TODO: change minWidth and minHeight to be specified by the widget
     },
     collect: monitor => monitor
   })
@@ -38,8 +38,6 @@ const GridDot = () => {
       console.log("ERROR SAVING NEW WIDGET POSITION", error)
     }
   }
-
-  // console.log("collectedProps", collectedProps)
 
   return <span ref={drop} className={styles['grid-dot']} id={collectedProps.targetId} />
 }
