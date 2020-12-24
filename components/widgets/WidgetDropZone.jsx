@@ -22,6 +22,7 @@ const WidgetDropZone = () => {
         return (
           <WidgetPositioner
             key={`${position.x}-${position.y}-${position.title}`}
+            widget={position}
             position={widthHeightPosition}
           >
             <widget.component />

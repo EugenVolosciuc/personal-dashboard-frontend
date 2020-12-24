@@ -1,6 +1,9 @@
 import React from 'react'
 
-const WidgetPositioner = ({ children, position }) => {
+import styles from 'components/widgets/styles/WidgetPositioner.module.scss'
+import WidgetSettings from 'components/widgets/WidgetSettings'
+
+const WidgetPositioner = ({ children, position, widget }) => {
   const positionStyle = {
     left: Math.round(position.x),
     top: Math.round(position.y),
@@ -9,7 +12,8 @@ const WidgetPositioner = ({ children, position }) => {
   }
 
   return (
-    <div className="fixed" style={positionStyle}>
+    <div style={positionStyle} className={styles['widget-positioner']}>
+      <WidgetSettings widget={widget} />
       {children}
     </div>
   )

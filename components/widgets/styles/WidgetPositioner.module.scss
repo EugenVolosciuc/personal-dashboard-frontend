@@ -1,0 +1,48 @@
+@import 'styles/variables.scss';
+
+$settingsContainerWidth: 35px;
+$ballWidth: 22px;
+
+.widget-positioner {
+  @apply fixed;
+  
+  .widget-settings {
+    opacity: 0;
+    transition: opacity $transitionFast;
+    right: calc(#{-$settingsContainerWidth} / 2);
+    top: calc(#{-$settingsContainerWidth} / 2);
+    width: $settingsContainerWidth;
+    height: $settingsContainerWidth;
+    @apply absolute;
+    
+    &:hover {
+      opacity: 1;
+    }
+
+    .ball {
+      transition: transform $transitionFast;
+      width: $ballWidth;
+      height: $ballWidth;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+
+      &:first-of-type {
+        transform: translate(-200%, -100%);
+      }
+
+      &:nth-of-type(2) {
+        transition-delay: .1s;
+        transform: translate(-50%, -50%);
+      }
+
+      &:last-of-type {
+        transition-delay: .2s;
+        transform: translate(0%, 100%);
+      }
+
+      @apply shadow bg-white flex justify-center items-center absolute cursor-pointer;
+    }
+  }
+}
