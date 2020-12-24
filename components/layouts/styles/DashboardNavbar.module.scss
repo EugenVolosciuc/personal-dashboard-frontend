@@ -1,0 +1,10 @@
+@import 'styles/variables.scss';
+
+.navbar {
+  height: $navbarHeight;
+  @apply flex justify-end items-center px-4;
+
+  .menu-container {
+    @apply flex;
+  }
+}

@@ -1,0 +1,19 @@
+@import 'styles/variables.scss';
+
+.navbar {
+  height: $navbarHeight;
+  @apply flex justify-between items-center px-4;
+
+  .logo-container {
+    height: $navbarHeight;
+    @apply flex items-center justify-center;
+
+    .logo {
+      @apply font-bold text-2xl;
+    }
+  }
+
+  .menu-container {
+    @apply flex;
+  }
+}

@@ -1,0 +1,18 @@
+@import 'styles/variables.scss';
+
+.menu-item {
+  @apply cursor-pointer;
+  
+  &.active {
+    @apply border-purple-500 border-l-4;
+  }
+
+  &.side {
+    transition: border-radius $transitionMedium;
+    @apply py-3 px-4;
+  }
+  
+  &.top {
+    @apply ml-4;  
+  }
+}

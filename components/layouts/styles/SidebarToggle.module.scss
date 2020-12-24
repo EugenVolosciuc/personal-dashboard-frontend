@@ -1,0 +1,23 @@
+@import 'styles/variables.scss';
+
+.toggle-container {
+  position: absolute;
+  right: unquote('-' + ($sidebarToggleWidth / 2));
+  top: 14vh;
+  width: $sidebarToggleWidth;
+  height: 50px;
+  z-index: 0;
+
+  .toggle {
+    transition: transform $transitionFast;
+    transform: translateX(-30%);
+    border-radius: 20px;
+    @apply w-full h-full absolute bg-purple-500 cursor-pointer;
+  }
+
+  &:hover {
+    .toggle {
+      transform: translateX(0);
+    }
+  }
+}

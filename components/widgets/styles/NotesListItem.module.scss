@@ -1,0 +1,36 @@
+@import 'styles/variables.scss';
+
+.note {
+  transition: border $transitionFast;
+  @apply border-b-2 border-gray-300 hover:border-purple-500;
+
+  &:last-of-type {
+    @apply border-transparent hover:border-purple-500;
+  }
+
+  &.selected {
+    @apply border-b-2 border-purple-500;
+  }
+}
+
+// https://css-tricks.com/line-clampin/
+.fade {
+  position: relative;
+  @apply text-sm flex-grow overflow-hidden;
+}
+
+.fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 10%;
+  right: 0;
+  width: 40%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
+
+.title {
+  height: 2rem;
+  overflow: hidden;
+}

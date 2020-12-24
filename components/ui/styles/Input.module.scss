@@ -1,0 +1,15 @@
+@import 'styles/variables.scss';
+
+.input-container {
+  min-width: 200px;
+  @apply mt-2;
+
+  .input {
+    transition: all $transitionFast;
+    @apply w-full bg-gray-100 border-transparent border-2 px-4 py-2 rounded-lg mt-1;
+
+    &:focus {
+      @apply border-purple-500 border-2 bg-white;
+    }
+  }
+}

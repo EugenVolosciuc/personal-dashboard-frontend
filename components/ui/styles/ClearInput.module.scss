@@ -1,0 +1,6 @@
+@import 'styles/variables.scss';
+
+.clear-input {
+  transition: border $transitionFast;
+  @apply text-2xl pb-2 w-full border-gray-300 border-b-2 focus:border-purple-500;
+}

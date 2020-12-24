@@ -1,0 +1,6 @@
+@import 'styles/variables.scss';
+
+.content-container {
+  @apply w-full;
+  min-height: calc(100vh - #{$navbarHeight});
+}

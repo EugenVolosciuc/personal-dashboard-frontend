@@ -1,0 +1,22 @@
+@import 'styles/variables.scss';
+
+.grid-dot {
+  display: inline-block;
+  width: $grid-dot-height;
+  height: $grid-dot-height;
+  border-radius: 50%;
+  position: relative;
+  @apply bg-purple-500;
+
+  &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(#{$grid-dot-height} * 2);
+      height: calc(#{$grid-dot-height} * 2);
+      border-radius: 50%;
+      @apply border-2 border-purple-500;
+  }
+}

@@ -1,0 +1,11 @@
+.login-form {
+  width: 100%;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @apply mx-auto rounded-lg p-4 absolute;
+
+  @media (min-width: 640px) {
+    width: 400px;
+  }
+}

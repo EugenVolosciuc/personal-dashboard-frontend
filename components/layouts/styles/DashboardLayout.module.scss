@@ -1,0 +1,21 @@
+@import 'styles/variables.scss';
+
+.content-container {
+  width: 100%;
+  transition: width $transitionMedium;
+  position: relative;
+
+  &.sidebar-open {
+    width: calc(100% - #{$sidebarWidth});
+
+    .content {
+      @apply rounded-tl-2xl;
+    }
+  }
+
+  .content {
+    transition: border-radius $transitionMedium;
+    height: calc(100vh - #{$navbarHeight});
+    @apply p-6 bg-gray-100 shadow-inner;
+  }
+}

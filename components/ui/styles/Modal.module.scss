@@ -1,0 +1,10 @@
+.modal {
+  @apply absolute top-2/4 left-2/4 bg-white rounded-2xl p-4 md:p-6 shadow-md;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, .5);
+  @apply z-50;
+}
