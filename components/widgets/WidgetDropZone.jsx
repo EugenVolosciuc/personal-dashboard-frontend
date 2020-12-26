@@ -17,7 +17,15 @@ const WidgetDropZone = () => {
       <Grid isShown={dashboardEditMode} />
       {widgetPositions && widgetPositions.map(position => {
         const widget = WIDGET_LIST[position.title]
-        const widthHeightPosition = getWidthHeightPositionOfWidget({ x: position.x, y: position.y })
+
+        const widthHeightPosition = getWidthHeightPositionOfWidget(
+          {
+            x: position.x,
+            y: position.y
+          },
+          position?.width || widget.defaultWidth,
+          position?.height || widget.defaultHeight
+        )
 
         return (
           <WidgetPositioner

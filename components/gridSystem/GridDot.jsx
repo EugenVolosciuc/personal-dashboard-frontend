@@ -16,23 +16,25 @@ const GridDot = () => {
     accept: DND_TYPES.WIDGET,
     drop: async (item, monitor) => {
       const dropTarget = document.querySelector(`#${monitor.targetId}`)
-      const widgetTitle = monitor.getItem().title.toLowerCase()
+      const widget = monitor.getItem()
+      const widgetTitle = widget.title.toLowerCase()
       const dotCoordinates = getWidgetDotCoordinates(dropTarget)
 
-      await saveWidgetPosition(widgetTitle, dotCoordinates)
+      await saveWidgetPosition(widgetTitle, dotCoordinates, widget.defaultWidth, widget.defaultHeight)
     },
     canDrop: (item, monitor) => {
+      const widget = monitor.getItem()
       const dropTarget = document.querySelector(`#${monitor.targetId}`)
 
       const dotCoordinates = getWidgetDotCoordinates(dropTarget)
-      return checkCanDrop(gridSize, dotCoordinates, widgetPositions) // TODO: change minWidth and minHeight to be specified by the widget
+      return checkCanDrop(gridSize, dotCoordinates, widgetPositions, widget.defaultWidth, widget.defaultHeight) // TODO: change minWidth and minHeight to be specified by the widget
     },
     collect: monitor => monitor
   })
 
-  const saveWidgetPosition = async (title, coordinates) => {
+  const saveWidgetPosition = async (title, coordinates, width, height) => {
     try {
-      await axios.post('/widget-positions', { title, type: title, x: coordinates.x, y: coordinates.y, gridSize: gridSize.id })
+      await axios.post('/widget-positions', { title, type: title, x: coordinates.x, y: coordinates.y, gridSize: gridSize.id, width, height })
       mutate()
     } catch (error) {
       console.log("ERROR SAVING NEW WIDGET POSITION", error)

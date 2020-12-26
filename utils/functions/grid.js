@@ -28,7 +28,7 @@ export const getGridLengthUnits = gridDot => {
   return gridLength
 }
 
-export const getWidthHeightPositionOfWidget = (dotCoordinates, minWidth = 2, minHeight = 2) => {
+export const getWidthHeightPositionOfWidget = (dotCoordinates, widgetWidth = 2, widgetHeight = 2) => {
   const grid = document.querySelector('#grid')
   const gridDot = grid.children[dotCoordinates.y].children[dotCoordinates.x]
   const gridDotRect = gridDot.getBoundingClientRect()
@@ -36,14 +36,14 @@ export const getWidthHeightPositionOfWidget = (dotCoordinates, minWidth = 2, min
   const { horizontalLength, verticalLength } = getGridLengthUnits(gridDot)
 
   return {
-    widgetWidth: Math.round((horizontalLength * minWidth) + (gridDotRect.width * (minWidth - 1))),
-    widgetHeight: Math.round((verticalLength * minHeight) + (gridDotRect.height * (minHeight - 1))),
+    widgetWidth: Math.round((horizontalLength * widgetWidth) + (gridDotRect.width * (widgetWidth - 1))),
+    widgetHeight: Math.round((verticalLength * widgetHeight) + (gridDotRect.height * (widgetHeight - 1))),
     x: gridDotRect.left + gridDotRect.width,
     y: gridDotRect.top + gridDotRect.height
   }
 }
 
-export const getWidgetDotCoordinates = (gridDot, minWidth = 2, minHeight = 2) => {
+export const getWidgetDotCoordinates = gridDot => {
     // Get index of the clicked dot in row and its row
     let indexOfClickedDot = 0
     let indexOfClickedRow = 0
@@ -66,15 +66,25 @@ export const checkCanDrag = (itemTitle, widgetPositions) => {
   return true
 }
 
-export const checkCanDrop = (gridSize, dropCoordinates, widgetPositions, minWidth = 2, minHeight = 2) => {
+export const checkCanDrop = (gridSize, dropCoordinates, widgetPositions, widgetWidth = 2, widgetHeight = 2) => {
   // Check that the dragged widget isn't positioned outside the boundaries of the grid
-  const widthIsOkay = dropCoordinates.x + 1 <= gridSize.width - minWidth
-  const heightIsOkay = dropCoordinates.y + 1 <= gridSize.height - minHeight
+  const widthIsOkay = dropCoordinates.x + 1 <= gridSize.width - widgetWidth
+  const heightIsOkay = dropCoordinates.y + 1 <= gridSize.height - widgetHeight
 
   // Check that the dragged widget doesn't overlap with another widget
   const widgetsOverlap = widgetPositions.find(position => {
-    const xAxisOverlaps = dropCoordinates.x > position.x - minWidth && dropCoordinates.x < position.x + minWidth
-    const yAxisOverlaps = dropCoordinates.y > position.y - minHeight && dropCoordinates.y < position.y + minHeight
+    // TODO: fix "Can't put widget on last line of overlapped widget (should be able to do that)"
+    // const yAxisIsFirstOfDraggedWidgetAndLastOfOverlappedWidget = 
+    
+    const xAxisOverlaps = dropCoordinates.x > position.x - widgetWidth && dropCoordinates.x < position.x + widgetWidth
+    const yAxisOverlaps = dropCoordinates.y > position.y - widgetHeight && dropCoordinates.y < position.y + widgetHeight
+
+    console.log("______")
+    // console.log("xAxisOverlaps", xAxisOverlaps)
+    // console.log("yAxisOverlaps", yAxisOverlaps)
+
+    console.log("position", position)
+    console.log("dropCoordinates", dropCoordinates)
 
     return xAxisOverlaps && yAxisOverlaps
   })

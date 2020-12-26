@@ -4,7 +4,9 @@ const WIDGET_LIST = {
     // TODO: Custom card
   todos: {
       title: 'Todos',
-      component: TodosCard
+      component: TodosCard,
+      defaultWidth: 2,
+      defaultHeight: 2
   },
   // {
   //     title: 'Expenses',
@@ -12,7 +14,9 @@ const WIDGET_LIST = {
   // },
   notes: {
     title: 'Notes',
-    component: NotesCard
+    component: NotesCard,
+    defaultWidth: 2,
+    defaultHeight: 3
   }
 }
 

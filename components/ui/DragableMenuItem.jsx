@@ -15,8 +15,7 @@ const DragableMenuItem = ({ item }) => {
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: DND_TYPES.WIDGET,
-      title: item.title,
-      component: item.component
+      ...item
     },
     begin: () => toggleDashboardEditMode(),
     end: () => toggleDashboardEditMode(),
