@@ -66,25 +66,21 @@ export const checkCanDrag = (itemTitle, widgetPositions) => {
   return true
 }
 
-export const checkCanDrop = (gridSize, dropCoordinates, widgetPositions, widgetWidth = 2, widgetHeight = 2) => {
+export const checkCanDrop = (gridSize, dropCoordinates, widgetPositions, widgetWidth = 2, widgetHeight = 2, oldWidgetPosition) => {
   // Check that the dragged widget isn't positioned outside the boundaries of the grid
   const widthIsOkay = dropCoordinates.x + 1 <= gridSize.width - widgetWidth
   const heightIsOkay = dropCoordinates.y + 1 <= gridSize.height - widgetHeight
 
   // Check that the dragged widget doesn't overlap with another widget
   const widgetsOverlap = widgetPositions.find(position => {
-    // TODO: fix "Can't put widget on last line of overlapped widget (should be able to do that)"
-    // const yAxisIsFirstOfDraggedWidgetAndLastOfOverlappedWidget = 
-    
+
+    // If the widget is moved, it can be positioned in the old position dots
+    if (oldWidgetPosition) {
+      if (position._id === oldWidgetPosition._id) return
+    }
+
     const xAxisOverlaps = dropCoordinates.x > position.x - widgetWidth && dropCoordinates.x < position.x + widgetWidth
     const yAxisOverlaps = dropCoordinates.y > position.y - widgetHeight && dropCoordinates.y < position.y + widgetHeight
-
-    console.log("______")
-    // console.log("xAxisOverlaps", xAxisOverlaps)
-    // console.log("yAxisOverlaps", yAxisOverlaps)
-
-    console.log("position", position)
-    console.log("dropCoordinates", dropCoordinates)
 
     return xAxisOverlaps && yAxisOverlaps
   })

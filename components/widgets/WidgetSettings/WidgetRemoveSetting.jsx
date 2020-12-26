@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faCompress, faArrowsAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-import styles from 'components/widgets/styles/WidgetPositioner.module.scss'
-import WidgetRemovalModal from 'components/modals/WidgetRemovalModal'
 import useWidgetPositions from 'utils/hooks/useWidgetPositions'
+import WidgetRemovalModal from 'components/modals/WidgetRemovalModal'
+import styles from 'components/widgets/styles/WidgetPositioner.module.scss'
 
-const WidgetSettings = ({ widget }) => {
+const WidgetRemovalSetting = ({ widget }) => {
   const [showWidgetRemovalModal, setShowWidgetRemovalModal] = useState(false)
   const { mutate } = useWidgetPositions()
 
@@ -23,24 +23,16 @@ const WidgetSettings = ({ widget }) => {
   }
 
   return (
-    <div className={styles['widget-settings']}>
+    <div className={styles.ball} onClick={toggleWidgetRemovalModal}>
       <WidgetRemovalModal
         widget={widget}
         isOpen={showWidgetRemovalModal}
         handleClose={toggleWidgetRemovalModal}
         handleConfirm={handleRemoveWidget}
       />
-      <div className={styles.ball}>
-        <FontAwesomeIcon icon={faArrowsAlt} size="xs" className="text-purple-500" />
-      </div>
-      <div className={styles.ball}>
-        <FontAwesomeIcon icon={faCompress} size="xs" className="text-purple-500" />
-      </div>
-      <div className={styles.ball} onClick={toggleWidgetRemovalModal}>
-        <FontAwesomeIcon icon={faTrashAlt} size="xs" className="text-red-600" />
-      </div>
+      <FontAwesomeIcon icon={faTrashAlt} size="xs" className="text-red-600" />
     </div>
   )
 }
 
-export default WidgetSettings
+export default WidgetRemovalSetting

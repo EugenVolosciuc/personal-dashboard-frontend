@@ -6,7 +6,7 @@ import useDashboardEditMode from 'utils/hooks/useDashboardEditMode'
 import useWidgetPositions from 'utils/hooks/useWidgetPositions'
 import { checkCanDrag } from 'utils/functions/grid'
 
-const DragableMenuItem = ({ item }) => {
+const DraggableMenuItem = ({ item }) => {
   const { toggleDashboardEditMode } = useDashboardEditMode()
   const { widgetPositions } = useWidgetPositions()
 
@@ -34,4 +34,4 @@ const DragableMenuItem = ({ item }) => {
   )
 }
 
-export default DragableMenuItem
+export default DraggableMenuItem

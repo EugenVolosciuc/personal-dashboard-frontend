@@ -4,6 +4,8 @@ $settingsContainerWidth: 40px;
 $ballWidth: 22px;
 
 .widget-positioner {
+  transition: opacity $transitionFast;
+  opacity: 1;
   @apply fixed;
   
   .widget-settings {
@@ -47,4 +49,8 @@ $ballWidth: 22px;
       @apply shadow bg-white flex justify-center items-center absolute cursor-pointer;
     }
   }
+}
+
+.is-moving {
+  opacity: .3;
 }

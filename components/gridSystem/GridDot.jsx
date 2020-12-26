@@ -20,19 +20,33 @@ const GridDot = () => {
       const widgetTitle = widget.title.toLowerCase()
       const dotCoordinates = getWidgetDotCoordinates(dropTarget)
 
-      await saveWidgetPosition(widgetTitle, dotCoordinates, widget.defaultWidth, widget.defaultHeight)
+      const updateWidget = !!item._id
+
+      if (updateWidget) {
+        await updateWidgetPosition(item._id, dotCoordinates)
+      } else {
+        await saveNewWidgetPosition(widgetTitle, dotCoordinates, widget.defaultWidth, widget.defaultHeight)
+      }
     },
     canDrop: (item, monitor) => {
       const widget = monitor.getItem()
       const dropTarget = document.querySelector(`#${monitor.targetId}`)
-
       const dotCoordinates = getWidgetDotCoordinates(dropTarget)
-      return checkCanDrop(gridSize, dotCoordinates, widgetPositions, widget.defaultWidth, widget.defaultHeight) // TODO: change minWidth and minHeight to be specified by the widget
+
+      const updateWidget = !!item._id
+
+      return checkCanDrop(
+        gridSize, 
+        dotCoordinates, 
+        widgetPositions, 
+        updateWidget ? item.width : widget.defaultWidth, 
+        updateWidget ? item.height : widget.defaultHeight, 
+        updateWidget ? item : null)
     },
     collect: monitor => monitor
   })
 
-  const saveWidgetPosition = async (title, coordinates, width, height) => {
+  const saveNewWidgetPosition = async (title, coordinates, width, height) => {
     try {
       await axios.post('/widget-positions', { title, type: title, x: coordinates.x, y: coordinates.y, gridSize: gridSize.id, width, height })
       mutate()
@@ -41,7 +55,16 @@ const GridDot = () => {
     }
   }
 
-  return <span ref={drop} className={styles['grid-dot']} id={collectedProps.targetId} />
+  const updateWidgetPosition = async (id, coordinates) => {
+    try {
+      await axios.patch(`/widget-positions/${id}`, { x: coordinates.x, y: coordinates.y })
+      mutate()
+    } catch (error) {
+      console.log("ERROR UPDATING WIDGET POSITION", error)
+    }
+  }
+
+  return <span ref={drop} className={`${styles['grid-dot']} ${styles['in-edit-mode']}`} id={collectedProps.targetId} />
 }
 
 export default GridDot

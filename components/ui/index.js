@@ -1,7 +1,7 @@
 import Button from './Button'
 import MenuItem from './MenuItem'
 import NestedMenuItem from './NestedMenuItem'
-import DragableMenuItem from './DragableMenuItem'
+import DraggableMenuItem from './DraggableMenuItem'
 import Input from './Input'
 import Card from './Card'
 import Modal from './Modal'
@@ -12,7 +12,7 @@ export {
   Button,
   MenuItem,
   NestedMenuItem,
-  DragableMenuItem,
+  DraggableMenuItem,
   Input,
   Card,
   Modal,

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 import styles from 'components/ui/styles/MenuItem.module.scss'
-import { DragableMenuItem } from 'components/ui'
+import { DraggableMenuItem } from 'components/ui'
 
 // Props:
 // menuType: 'side' | 'top'
@@ -39,7 +39,7 @@ const MenuItem = ({ menuData, menuType = 'side', active = false, className = '',
           {arrowForParents}
         </p>
       }
-      {isDragable && <DragableMenuItem item={menuData} />}
+      {isDragable && <DraggableMenuItem item={menuData} />}
     </div>
   )
 }

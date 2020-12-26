@@ -20,3 +20,7 @@
       @apply border-2 border-purple-500;
   }
 }
+
+.in-edit-mode {
+  z-index: 2;
+}
