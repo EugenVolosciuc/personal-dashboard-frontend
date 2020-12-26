@@ -1,7 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import isObject from 'lodash/isObject'
 
 import { Card } from 'components/ui'
 import { NotesModal } from 'components/widgets/modals'

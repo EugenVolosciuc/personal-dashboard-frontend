@@ -7,7 +7,7 @@ const Card = ({ children, title, extra, style = {} }) => {
     <div className={styles.card} style={style}>
       <div className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
-        {extra && <span>{extra}</span>}
+        {extra && <span className={styles.extra}>{extra}</span>}
       </div>
       <div className={styles.content}>
         {children}

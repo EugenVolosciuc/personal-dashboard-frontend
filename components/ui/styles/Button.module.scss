@@ -1,4 +1,16 @@
+@import 'styles/variables.scss';
+
 .button {
+  transition: transform $transitionFast;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
   @apply rounded-lg tracking-wider font-bold;
 
   &.sm {
@@ -23,7 +35,7 @@
 }
 
 .danger {
-  @apply bg-red-600 text-white;
+  @apply bg-red-600 text-white border-transparent;
 }
 
 .disabled {

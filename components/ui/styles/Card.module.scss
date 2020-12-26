@@ -12,4 +12,8 @@
   .content {
     @apply flex-grow overflow-y-auto;
   }
+
+  .extra {
+    z-index: 1;
+  }
 }

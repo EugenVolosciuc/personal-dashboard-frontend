@@ -2,19 +2,20 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import { isEmail } from 'validator'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 import styles from './styles/SignUpForm.module.scss'
 import { Input, Button } from 'components/ui'
 
 const SignUpForm = () => {
   const { register, handleSubmit, watch, errors } = useForm()
+  const router = useRouter()
 
   const signUp = async values => {
-    console.log("values", values)
     const { username, email, password } = values
     try {
-      const user = await axios.post('/users', { username, email, password })
-      console.log("user", user)
+      await axios.post('/users', { username, email, password })
+      router.push('/auth/login')
     } catch (error) {
       console.log("ERROR creating user", error)
     }

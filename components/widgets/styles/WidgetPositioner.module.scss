@@ -1,6 +1,6 @@
 @import 'styles/variables.scss';
 
-$settingsContainerWidth: 35px;
+$settingsContainerWidth: 40px;
 $ballWidth: 22px;
 
 .widget-positioner {
@@ -17,6 +17,22 @@ $ballWidth: 22px;
     
     &:hover {
       opacity: 1;
+      
+      .ball {
+        &:first-of-type {
+          transform: translate(-200%, -100%);
+        }
+  
+        &:nth-of-type(2) {
+          transition-delay: .01s;
+          transform: translate(-35%, -65%);
+        }
+  
+        &:last-of-type {
+          transition-delay: .02s;
+          transform: translate(0%, 100%);
+        }
+      }
     }
 
     .ball {
@@ -24,23 +40,9 @@ $ballWidth: 22px;
       width: $ballWidth;
       height: $ballWidth;
       border-radius: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-150%, 50%);
       top: 50%;
       left: 50%;
-
-      &:first-of-type {
-        transform: translate(-200%, -100%);
-      }
-
-      &:nth-of-type(2) {
-        transition-delay: .1s;
-        transform: translate(-50%, -50%);
-      }
-
-      &:last-of-type {
-        transition-delay: .2s;
-        transform: translate(0%, 100%);
-      }
 
       @apply shadow bg-white flex justify-center items-center absolute cursor-pointer;
     }

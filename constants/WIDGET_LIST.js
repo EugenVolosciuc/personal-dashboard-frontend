@@ -1,11 +1,11 @@
-import { NotesCard } from 'components/widgets/cards'
+import { NotesCard, TodosCard } from 'components/widgets/cards'
 
 const WIDGET_LIST = {
     // TODO: Custom card
-  // {
-  //     title: 'Todos',
-  //     component: TodosCard
-  // },
+  todos: {
+      title: 'Todos',
+      component: TodosCard
+  },
   // {
   //     title: 'Expenses',
   //     component: ExpensesCard

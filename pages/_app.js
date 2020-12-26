@@ -4,11 +4,14 @@ import 'styles/globals.scss'
 import 'styles/package-overrides.scss'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import DataProvider from 'utils/contexts/DataProvider'
+import { SidebarProvider } from 'utils/contexts/sidebarContext'
 
 function MyApp({ Component, pageProps }) {
   return (
     <DataProvider>
-      <Component {...pageProps} />
+      <SidebarProvider>
+        <Component {...pageProps} />
+      </SidebarProvider>
     </DataProvider>
   )
 }

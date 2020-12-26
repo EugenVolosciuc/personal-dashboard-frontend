@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import styles from '../styles/Sidebar.module.scss'
 import SidebarToggle from 'components/layouts/Sidebar/SidebarToggle'
 import { MenuItem, NestedMenuItem } from 'components/ui'
 import WIDGET_LIST from 'constants/WIDGET_LIST'
-// import { useAuth } from 'utils/contexts/auth'
+import useSidebar from 'utils/hooks/useSidebar'
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
-  // const { user } = useAuth()
-
+const Sidebar = () => {
+  const { sidebarIsOpen } = useSidebar()
   const menuItems = useMemo(() => ([
     {
       label: 'Widgets',
@@ -18,8 +17,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   ]), [])
 
   return (
-    <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
-      <SidebarToggle isOpen={isOpen} setIsOpen={setIsOpen} />
+    <div className={`${styles.sidebar} ${sidebarIsOpen ? styles.open : ''}`}>
+      {/* Removed SidebarToggle to avoid issues with widget positioning on resize */}
+      {/* <SidebarToggle /> */}
       <div className="w-full h-full z-30 bg-white relative">
         <div className={styles['logo-container']}>
           <p className={styles.logo}>Dashboard</p>
