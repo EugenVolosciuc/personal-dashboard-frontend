@@ -9,7 +9,7 @@ const gridSizeContext = createContext({
   setGridSize: () => null
 })
 
-const MIN_DOT_DISTANCE_WIDTH = 130
+const MIN_DOT_DISTANCE_WIDTH = 140
 const MIN_DOT_DISTANCE_HEIGHT = 140
 
 export const GridSizeProvider = ({ children }) => {

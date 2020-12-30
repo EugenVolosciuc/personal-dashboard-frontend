@@ -34,7 +34,7 @@ const NoteModal = ({ isOpen, handleClose }) => {
       const { data } = await axios.post(
         '/notes',
         {
-          title: 'Untitled',
+          title: 'Untitled note',
           content: emptyEditorContent
         }
       )

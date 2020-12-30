@@ -8,10 +8,10 @@ const widgetPositionsContext = createContext()
 
 export const WidgetPositionsProvider = ({ children }) => {
   const { gridSize } = useGridSize()
-  const { data: widgetPositions, mutate, isValidating } = useSWR(gridSize?.id ? `/widget-positions?gridSize=${gridSize.id}` : null, fetcher)
+  const { data: widgetPositions, mutate, isValidating, error } = useSWR(gridSize?.id ? `/widget-positions?gridSize=${gridSize.id}` : null, fetcher)
 
   return (
-    <widgetPositionsContext.Provider value={{ widgetPositions, mutate, isValidating }}>
+    <widgetPositionsContext.Provider value={{ widgetPositions, mutate, isValidating, error }}>
       {children}
     </widgetPositionsContext.Provider>
   )

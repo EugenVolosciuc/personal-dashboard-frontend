@@ -2,5 +2,14 @@
 
 .clear-input {
   transition: border $transitionFast;
-  @apply text-2xl pb-2 w-full border-gray-300 border-b-2 focus:border-purple-500;
+  width: 100%;
+  @apply pb-2 border-gray-300 border-b-2 focus:border-purple-500;
+
+  &.sm {
+    @apply text-base;
+  }
+
+  &.lg {
+    @apply text-2xl;
+  }
 }

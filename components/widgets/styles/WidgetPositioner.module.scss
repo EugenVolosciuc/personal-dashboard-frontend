@@ -45,12 +45,18 @@ $ballWidth: 22px;
       transform: translate(-150%, 50%);
       top: 50%;
       left: 50%;
+      z-index: 3;
 
       @apply shadow bg-white flex justify-center items-center absolute cursor-pointer;
     }
   }
 }
 
+.in-edit-mode {
+  z-index: 2;
+}
+
 .is-moving {
   opacity: .3;
+  z-index: 0;
 }
