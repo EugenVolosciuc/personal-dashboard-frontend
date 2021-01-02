@@ -1,0 +1,32 @@
+@import 'styles/variables.scss';
+$ballWidth: 22px;
+
+.resize-border-container {
+  transition: opacity $transitionFast;
+  position: absolute;
+  opacity: 0;
+
+  &.vertical {
+    top: 50%;
+    right: -0.5rem;
+    transform: translate(50%, -50%);
+    padding: 15% 1rem 15% 0;
+  }
+
+  &.horizontal {
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    padding: 1rem 15% 0 15%;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .border {
+    width: $ballWidth;
+    height: $ballWidth;
+    @apply bg-purple-500 rounded-2xl;
+  }
+}

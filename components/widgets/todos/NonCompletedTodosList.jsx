@@ -5,7 +5,7 @@ import useTodos from 'utils/hooks/useTodos'
 const NonCompletedTodosList = () => {
   const { nonCompletedTodos } = useTodos()
 
-  console.log("nonCompletedTodos", nonCompletedTodos)
+  // console.log("nonCompletedTodos", nonCompletedTodos)
 
   return (
     <div>

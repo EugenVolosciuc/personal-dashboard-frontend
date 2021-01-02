@@ -17,8 +17,7 @@ export const getGridLengthUnits = gridDot => {
 
   const gridDotRect = gridDot.getBoundingClientRect()
   const nextSiblingRect = gridDot.nextSibling.getBoundingClientRect()
-  const nextRowSiblingRect = gridDot.parentElement.nextSibling.children[indexOfClickedDot].getBoundingClientRect()
-
+  const nextRowSiblingRect = gridDot.parentElement.parentElement.nextSibling.children[0].children[indexOfClickedDot].getBoundingClientRect()
   // Get horizontal length between two dots
   gridLength.horizontalLength = nextSiblingRect.left - gridDotRect.right
 
@@ -30,7 +29,11 @@ export const getGridLengthUnits = gridDot => {
 
 export const getWidthHeightPositionOfWidget = (dotCoordinates, widgetWidth = 2, widgetHeight = 2) => {
   const grid = document.querySelector('#grid')
-  const gridDot = grid.children[dotCoordinates.y].children[dotCoordinates.x]
+  const gridDot = grid
+    .children[dotCoordinates.y]   // grid row
+    .children[0]                  // dots container
+    .children[dotCoordinates.x]   // grid dot
+
   const gridDotRect = gridDot.getBoundingClientRect()
 
   const { horizontalLength, verticalLength } = getGridLengthUnits(gridDot)
@@ -47,7 +50,7 @@ export const getWidgetDotCoordinates = gridDot => {
     // Get index of the clicked dot in row and its row
     let indexOfClickedDot = 0
     let indexOfClickedRow = 0
-    let gridDotRow = gridDot.parentElement
+    let gridDotRow = gridDot.parentElement.parentElement
 
     for (let i = 0; (gridDot = gridDot.previousElementSibling); i++) {
       indexOfClickedDot++
@@ -58,6 +61,20 @@ export const getWidgetDotCoordinates = gridDot => {
     }
 
     return { x: indexOfClickedDot, y: indexOfClickedRow }
+}
+
+export const getWidgetPillarIndex = (gridPillar, orientation) => {
+  let indexOfPillar = 0
+
+  let pillar = orientation === "horizontal" ? gridPillar.parentElement.parentElement : gridPillar
+
+  for (let i = 0; (pillar = pillar.previousElementSibling); i++) {
+    indexOfPillar++
+  }
+
+  console.log("INDEX OF PILLAR", indexOfPillar)
+
+  return indexOfPillar
 }
 
 export const checkCanDrag = (itemTitle, widgetPositions) => {

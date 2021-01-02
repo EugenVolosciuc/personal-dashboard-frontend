@@ -8,6 +8,7 @@ import Sidebar from 'components/layouts/Sidebar/Sidebar'
 import { DashboardEditModeProvider } from 'utils/contexts/dashboardEditModeContext'
 import { GridSizeProvider } from 'utils/contexts/gridSizeContext'
 import { WidgetPositionsProvider } from 'utils/contexts/widgetPositionsContext'
+import { WidgetResizeModeProvider } from 'utils/contexts/widgetResizeModeContext'
 import useSidebar from 'utils/hooks/useSidebar'
 
 const DashboardLayout = ({ children }) => {
@@ -19,13 +20,15 @@ const DashboardLayout = ({ children }) => {
         <DashboardEditModeProvider>
           <GridSizeProvider>
             <WidgetPositionsProvider>
-              <Sidebar />
-              <div className={`${styles['content-container']} ${sidebarIsOpen ? styles['sidebar-open'] : ''}`}>
-                <DashboardNavbar />
-                <div className={styles.content}>
-                  {children}
+              <WidgetResizeModeProvider>
+                <Sidebar />
+                <div className={`${styles['content-container']} ${sidebarIsOpen ? styles['sidebar-open'] : ''}`}>
+                  <DashboardNavbar />
+                  <div className={styles.content}>
+                    {children}
+                  </div>
                 </div>
-              </div>
+              </WidgetResizeModeProvider>
             </WidgetPositionsProvider>
           </GridSizeProvider>
         </DashboardEditModeProvider>

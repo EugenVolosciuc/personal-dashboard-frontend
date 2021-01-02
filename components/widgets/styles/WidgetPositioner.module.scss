@@ -19,22 +19,36 @@ $ballWidth: 22px;
     
     &:hover {
       opacity: 1;
-      
+
+      // For two setting balls
       .ball {
+        z-index: 50;
         &:first-of-type {
-          transform: translate(-200%, -100%);
+          transform: translate(-120%, -80%);
         }
-  
-        &:nth-of-type(2) {
-          transition-delay: .01s;
-          transform: translate(-35%, -65%);
-        }
-  
+
         &:last-of-type {
-          transition-delay: .02s;
-          transform: translate(0%, 100%);
+          transition-delay: .01s;
+          transform: translate(-20%, 20%);
         }
       }
+
+      // For three setting balls
+      // .ball {
+      //   &:first-of-type {
+      //     transform: translate(-200%, -100%);
+      //   }
+  
+      //   &:nth-of-type(2) {
+      //     transition-delay: .01s;
+      //     transform: translate(-35%, -65%);
+      //   }
+  
+      //   &:last-of-type {
+      //     transition-delay: .02s;
+      //     transform: translate(0%, 100%);
+      //   }
+      // }
     }
 
     .ball {

@@ -17,8 +17,30 @@
   }
 
   .grid-row {
+    position: relative;
+
+    .dots-container {
+      width: 100%;
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-between;
+    }
+  
+    .horizontal-pillars-container {
+      position: absolute;
+      width: 100%;
+      height: $grid-dot-height;
+      top: 0;
+    }
+  }
+
+  .vertical-pillars-container {
+    position: absolute;
+    width: $grid-dot-height;
+    height: calc(100% - (#{$grid-dot-height} * 2));
+    width: calc(100% - (#{$grid-dot-height} * 2));
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 }

@@ -5,12 +5,14 @@ import axios from 'axios'
 import styles from 'components/gridSystem/styles/GridDot.module.scss'
 import useGridSize from 'utils/hooks/useGridSize'
 import useWidgetPositions from 'utils/hooks/useWidgetPositions'
+import useWidgetResizeMode from 'utils/hooks/useWidgetResizeMode'
 import DND_TYPES from 'constants/DND_TYPES'
 import { getWidgetDotCoordinates, checkCanDrop } from 'utils/functions/grid'
 
 const GridDot = () => {
   const { gridSize } = useGridSize()
   const { widgetPositions, mutate } = useWidgetPositions()
+  const { isResizing } = useWidgetResizeMode()
 
   const [collectedProps, drop] = useDrop({
     accept: DND_TYPES.WIDGET,
@@ -64,7 +66,11 @@ const GridDot = () => {
     }
   }
 
-  return <span ref={drop} className={`${styles['grid-dot']} ${styles['in-edit-mode']}`} id={collectedProps.targetId} />
+  return <span 
+    ref={drop} 
+    className={`${styles['grid-dot']} ${isResizing ? styles['is-resizing'] : ''}`} 
+    id={collectedProps.targetId} 
+  />
 }
 
 export default GridDot
