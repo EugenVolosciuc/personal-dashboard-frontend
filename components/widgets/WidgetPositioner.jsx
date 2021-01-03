@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import styles from 'components/widgets/styles/WidgetPositioner.module.scss'
 import WidgetResizerContainer from 'components/widgets/WidgetResizerContainer'
-import WidgetSettings from 'components/widgets/WidgetSettings/WidgetSettings'
+import WidgetSettings from 'components/widgets/widget-settings/WidgetSettings'
 import useDashboardEditMode from 'utils/hooks/useDashboardEditMode'
 import useWidgetResizeMode from 'utils/hooks/useWidgetResizeMode'
 

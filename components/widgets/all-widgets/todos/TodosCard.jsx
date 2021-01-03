@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 import { Card } from 'components/ui'
-import NewTodoInput from 'components/widgets/todos/NewTodoInput'
-import NonCompletedTodosList from 'components/widgets/todos/NonCompletedTodosList'
-import CompletedTodosList from 'components/widgets/todos/CompletedTodosList'
+import NewTodoInput from 'components/widgets/all-widgets/todos/NewTodoInput'
+import NonCompletedTodosList from 'components/widgets/all-widgets/todos/NonCompletedTodosList'
+import CompletedTodosList from 'components/widgets/all-widgets/todos/CompletedTodosList'
 
 const TodosCard = () => {
   const [showNewTodoInput, setShowNewTodoInput] = useState(false)

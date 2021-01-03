@@ -1,4 +1,4 @@
-import NotesModal from 'components/widgets/notes/NotesModal'
+import NotesModal from 'components/widgets/all-widgets/notes/NotesModal'
 
 export {
   NotesModal

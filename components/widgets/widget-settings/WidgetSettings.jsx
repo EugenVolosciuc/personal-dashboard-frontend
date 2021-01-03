@@ -1,8 +1,8 @@
 import React from 'react'
 
 import styles from 'components/widgets/styles/WidgetPositioner.module.scss'
-import WidgetRemoveSetting from 'components/widgets/WidgetSettings/WidgetRemoveSetting'
-import WidgetMoveSetting from 'components/widgets/WidgetSettings/WidgetMoveSetting'
+import WidgetRemoveSetting from 'components/widgets/widget-settings/WidgetRemoveSetting'
+import WidgetMoveSetting from 'components/widgets/widget-settings/WidgetMoveSetting'
 // import WidgetResizeSetting from 'components/widgets/WidgetSettings/WidgetResizeSetting'
 
 const WidgetSettings = ({ widget, setWidgetIsMoving }) => {

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDrop } from 'react-dnd'
 import axios from 'axios'
 
-import styles from 'components/gridSystem/styles/GridDot.module.scss'
+import styles from 'components/grid-system/styles/GridDot.module.scss'
 import useGridSize from 'utils/hooks/useGridSize'
 import useWidgetPositions from 'utils/hooks/useWidgetPositions'
 import useWidgetResizeMode from 'utils/hooks/useWidgetResizeMode'

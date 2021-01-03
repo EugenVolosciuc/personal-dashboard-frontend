@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 
-import GridDot from 'components/gridSystem/GridDot'
-import GridPillar from 'components/gridSystem/GridPillar'
-import styles from 'components/gridSystem/styles/Grid.module.scss'
+import GridDot from 'components/grid-system/GridDot'
+import GridPillar from 'components/grid-system/GridPillar'
+import styles from 'components/grid-system/styles/Grid.module.scss'
 import useGridSize from 'utils/hooks/useGridSize'
 
 const Grid = ({ isShown }) => {

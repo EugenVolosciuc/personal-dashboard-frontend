@@ -2,7 +2,7 @@ import React from 'react'
 import { useDrop } from 'react-dnd'
 import axios from 'axios'
 
-import styles from 'components/gridSystem/styles/GridPillar.module.scss'
+import styles from 'components/grid-system/styles/GridPillar.module.scss'
 import DND_TYPES from 'constants/DND_TYPES'
 import { getWidgetPillarIndex } from 'utils/functions/grid'
 import useWidgetPositions from 'utils/hooks/useWidgetPositions'

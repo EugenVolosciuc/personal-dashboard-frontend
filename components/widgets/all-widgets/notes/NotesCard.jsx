@@ -4,7 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import { Card } from 'components/ui'
 import { NotesModal } from 'components/widgets/modals'
-import NotesList from 'components/widgets/notes/NotesList'
+import NotesList from 'components/widgets/all-widgets/notes/NotesList'
 
 const NotesCard = () => {
   const [showNotesModal, setShowNotesModal] = useState(false) // true | false | note

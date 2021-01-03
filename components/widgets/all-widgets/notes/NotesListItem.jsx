@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { EditorState, convertFromRaw } from 'draft-js'
 
-import styles from '../styles/NotesListItem.module.scss'
+import styles from 'components/widgets/styles/NotesListItem.module.scss'
 
 dayjs.extend(relativeTime)
 

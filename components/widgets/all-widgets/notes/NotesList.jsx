@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
 import { Loader, Button } from 'components/ui'
-import NotesListItem from 'components/widgets/notes/NotesListItem'
+import NotesListItem from 'components/widgets/all-widgets/notes/NotesListItem'
 import useIntersectionObserver from 'utils/hooks/useIntersectionObserver'
 import useNotes from 'utils/hooks/useNotes'
 

@@ -3,14 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import isObject from 'lodash/isObject'
-import debounce from 'lodash/debounce'
 import { EditorState, convertToRaw } from 'draft-js'
 
-import styles from '../styles/NotesModal.module.scss'
+import styles from 'components/widgets/styles/NotesModal.module.scss'
 import { Modal, ClearInput } from 'components/ui'
 import Editor from 'components/misc/Editor'
 import useNotes from 'utils/hooks/useNotes'
-import NotesList from 'components/widgets/notes/NotesList'
+import NotesList from 'components/widgets/all-widgets/notes/NotesList'
 
 let titleCancelToken
 let contentCancelToken

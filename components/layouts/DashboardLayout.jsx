@@ -4,7 +4,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 
 import styles from './styles/DashboardLayout.module.scss'
 import DashboardNavbar from 'components/layouts/navbars/DashboardNavbar'
-import Sidebar from 'components/layouts/Sidebar/Sidebar'
+import Sidebar from 'components/layouts/sidebar/Sidebar'
 import { DashboardEditModeProvider } from 'utils/contexts/dashboardEditModeContext'
 import { GridSizeProvider } from 'utils/contexts/gridSizeContext'
 import { WidgetPositionsProvider } from 'utils/contexts/widgetPositionsContext'
