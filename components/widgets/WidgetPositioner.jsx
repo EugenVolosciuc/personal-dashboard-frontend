@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, createContext } from 'react'
 
 import styles from 'components/widgets/styles/WidgetPositioner.module.scss'
 import WidgetResizerContainer from 'components/widgets/WidgetResizerContainer'
 import WidgetSettings from 'components/widgets/widget-settings/WidgetSettings'
 import useDashboardEditMode from 'utils/hooks/useDashboardEditMode'
 import useWidgetResizeMode from 'utils/hooks/useWidgetResizeMode'
+
+export const widgetPositionContext = createContext()
 
 const WidgetPositioner = ({ children, position, widget }) => {
   const [widgetIsMoving, setWidgetIsMoving] = useState(false)
@@ -26,7 +28,9 @@ const WidgetPositioner = ({ children, position, widget }) => {
       <WidgetSettings widget={widget} setWidgetIsMoving={setWidgetIsMoving} />
       <WidgetResizerContainer widget={widget} />
       <div className={`w-full h-full ${widgetIsMoving || resizedWidget === widget._id ? styles['is-moving'] : ''}`}>
-        {children}
+        <widgetPositionContext.Provider value={widget}>
+          {children}
+        </widgetPositionContext.Provider>
       </div>
     </div>
   )

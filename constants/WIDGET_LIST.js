@@ -1,13 +1,7 @@
-import { NotesCard, TodosCard } from 'components/widgets/cards'
+import { NotesCard, TodosCard, WeatherCard } from 'components/widgets/cards'
 
 const WIDGET_LIST = {
-    // TODO: Custom card
-  todos: {
-      title: 'Todos',
-      component: TodosCard,
-      defaultWidth: 2,
-      defaultHeight: 2
-  },
+  // TODO: Custom card
   // {
   //     title: 'Expenses',
   //     component: ExpensesCard
@@ -17,6 +11,18 @@ const WIDGET_LIST = {
     component: NotesCard,
     defaultWidth: 2,
     defaultHeight: 3
+  },
+  todos: {
+    title: 'Todos',
+    component: TodosCard,
+    defaultWidth: 2,
+    defaultHeight: 2
+  },
+  weather: {
+    title: 'Weather',
+    component: WeatherCard,
+    defaultWidth: 2,
+    defaultHeight: 1
   }
 }
 
