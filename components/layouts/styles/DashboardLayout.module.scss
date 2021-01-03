@@ -16,6 +16,6 @@
   .content {
     transition: border-radius $transitionMedium;
     height: calc(100vh - #{$navbarHeight});
-    @apply p-4 bg-gray-100 shadow-inner;
+    @apply bg-gray-100 shadow-inner;
   }
 }

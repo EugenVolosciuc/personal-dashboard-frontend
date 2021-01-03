@@ -72,8 +72,6 @@ export const getWidgetPillarIndex = (gridPillar, orientation) => {
     indexOfPillar++
   }
 
-  console.log("INDEX OF PILLAR", indexOfPillar)
-
   return indexOfPillar
 }
 

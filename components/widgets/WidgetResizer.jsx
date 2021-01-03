@@ -18,8 +18,11 @@ const WidgetResizeBorder = ({ widget, orientation = 'vertical' }) => {
       widget
     },
     begin: () => {
-      toggleDashboardEditMode()
-      toggleResizeWidgetMode(widget._id)
+      // NOTE: Added setTimeout because of Chrome issue, explained here: https://github.com/react-dnd/react-dnd/issues/477
+      setTimeout(() => {
+        toggleDashboardEditMode()
+        toggleResizeWidgetMode(widget._id)
+      }, 0)
     },
     end: () => {
       toggleDashboardEditMode()
