@@ -1,7 +1,7 @@
 @import 'styles/variables.scss';
 $ballWidth: 22px;
 
-.resize-border-container {
+.resizer-container {
   transition: opacity $transitionFast;
   position: absolute;
   opacity: 0;

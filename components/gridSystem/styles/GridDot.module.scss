@@ -6,7 +6,7 @@
   height: $grid-dot-height;
   border-radius: 50%;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   @apply bg-purple-500;
 
   &::after {

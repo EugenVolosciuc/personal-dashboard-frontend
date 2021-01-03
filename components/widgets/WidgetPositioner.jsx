@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import styles from 'components/widgets/styles/WidgetPositioner.module.scss'
-import WidgetResizer from 'components/widgets/WidgetResizer'
+import WidgetResizerContainer from 'components/widgets/WidgetResizerContainer'
 import WidgetSettings from 'components/widgets/WidgetSettings/WidgetSettings'
 import useDashboardEditMode from 'utils/hooks/useDashboardEditMode'
 import useWidgetResizeMode from 'utils/hooks/useWidgetResizeMode'
@@ -24,8 +24,8 @@ const WidgetPositioner = ({ children, position, widget }) => {
       className={`${styles['widget-positioner']}`}
     >
       <WidgetSettings widget={widget} setWidgetIsMoving={setWidgetIsMoving} />
-      <WidgetResizer widget={widget} />
-      <div className={`w-full h-full ${widgetIsMoving || resizedWidget === widget._id ? styles['is-moving'] : ''} ${dashboardEditMode ? styles['in-edit-mode'] : ''}`}>
+      <WidgetResizerContainer widget={widget} />
+      <div className={`w-full h-full ${widgetIsMoving || resizedWidget === widget._id ? styles['is-moving'] : ''}`}>
         {children}
       </div>
     </div>

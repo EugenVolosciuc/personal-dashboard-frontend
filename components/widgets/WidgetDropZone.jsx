@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import isEmpty from 'lodash/isEmpty'
 
 import { Loader } from 'components/ui'
@@ -13,6 +13,31 @@ import { getWidthHeightPositionOfWidget } from 'utils/functions/grid'
 const WidgetDropZone = () => {
   const { dashboardEditMode } = useDashboardEditMode()
   const { widgetPositions, isValidating } = useWidgetPositions()
+
+  const renderWidgets = () => widgetPositions && widgetPositions.map(position => {
+    const widget = WIDGET_LIST[position.title]
+
+    const widthHeightPosition = getWidthHeightPositionOfWidget(
+      {
+        x: position.x,
+        y: position.y
+      },
+      position?.width || widget.defaultWidth,
+      position?.height || widget.defaultHeight
+    )
+
+    return (
+      <WidgetPositioner
+        key={`${position.x}-${position.y}-${position.title}`}
+        widget={position}
+        position={widthHeightPosition}
+      >
+        <widget.component />
+      </WidgetPositioner>
+    )
+  })
+
+  const widgets = useMemo(() => renderWidgets(), [widgetPositions])
 
   return (
     <div className="relative w-full h-full">
@@ -29,28 +54,7 @@ const WidgetDropZone = () => {
         </div>
       }
 
-      {widgetPositions && widgetPositions.map(position => {
-        const widget = WIDGET_LIST[position.title]
-
-        const widthHeightPosition = getWidthHeightPositionOfWidget(
-          {
-            x: position.x,
-            y: position.y
-          },
-          position?.width || widget.defaultWidth,
-          position?.height || widget.defaultHeight
-        )
-
-        return (
-          <WidgetPositioner
-            key={`${position.x}-${position.y}-${position.title}`}
-            widget={position}
-            position={widthHeightPosition}
-          >
-            <widget.component />
-          </WidgetPositioner>
-        )
-      })}
+      {widgets}
     </div>
   )
 }

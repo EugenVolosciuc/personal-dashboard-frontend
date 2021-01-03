@@ -2,7 +2,6 @@ import { useState, createContext } from 'react'
 
 const widgetResizeModeContext = createContext({
   resizedWidget: null,
-  isResizing: false,
   toggleResizeWidgetMode: () => null
 })
 

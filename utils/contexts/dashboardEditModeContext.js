@@ -2,7 +2,7 @@ import { useState, createContext } from 'react'
 
 const dashboardEditModeContext = createContext({
   dashboardEditMode: false,
-  toggleDashboardEditMode: () => console.log("DOES IT FIRE THIS PIECE OF CRAP?...")
+  toggleDashboardEditMode: () => null
 })
 
 export const DashboardEditModeProvider = ({ children }) => {
