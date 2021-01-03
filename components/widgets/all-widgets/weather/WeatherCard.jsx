@@ -8,7 +8,6 @@ import LocationSetter from 'components/widgets/all-widgets/weather/LocationSette
 const WeatherCard = () => {
   const { user } = useAuth()
 
-
   return (
     <Card title="Weather">
       {user?.location
