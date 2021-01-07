@@ -7,6 +7,8 @@ import Card from './Card'
 import Modal from './Modal'
 import ClearInput from './ClearInput'
 import Loader from './Loader'
+import Tabs from './Tabs'
+import TabItem from './TabItem'
 
 export {
   Button,
@@ -17,5 +19,7 @@ export {
   Card,
   Modal,
   ClearInput,
-  Loader
+  Loader,
+  Tabs,
+  TabItem
 }

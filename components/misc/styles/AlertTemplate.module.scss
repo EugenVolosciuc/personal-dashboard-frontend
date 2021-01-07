@@ -1,0 +1,19 @@
+.alert {
+  width: 90vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  @apply bg-white rounded-lg flex items-center p-4 relative;
+
+  .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  @media (min-width: 500px) {
+    width: 50vw;
+  }
+
+  @media (min-width: 768px) {
+    width: 300px;
+  }
+}

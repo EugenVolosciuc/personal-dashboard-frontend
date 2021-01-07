@@ -1,7 +1,8 @@
+import dayjs from 'dayjs'
 import { faSun, faBolt, faCloudRain, faSnowflake, faWind, faCloudSunRain, faCloudMoonRain, faCloudMoon, faCloudSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 
 const getWeatherIcon = weather => {
-  const isDaytime = weather.dt >= weather.sunrise && weather.dt < weather.sunset
+  const isDaytime = dayjs.unix(weather.dt).isAfter(dayjs.unix(weather.dt).set('hour', 7)) && dayjs.unix(weather.dt).isBefore(dayjs.unix(weather.dt).set('hour', 20))
 
   switch (weather.weather[0].main) {
     case 'Thunderstorm':

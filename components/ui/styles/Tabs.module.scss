@@ -1,0 +1,7 @@
+.tab-item {
+  @apply cursor-pointer m-2;
+}
+
+.active {
+  @apply text-purple-500 font-bold border-b-2 border-purple-500;
+}
