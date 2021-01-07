@@ -19,7 +19,7 @@ const NotesListItem = ({ note, handleNoteClick, lastItemRef, isSelected }) => {
     >
       <h5 className={`text-sm font-bold ${styles.title}`}>{title}</h5>
       {content && <p className={styles.fade}>{EditorState.createWithContent(convertFromRaw(JSON.parse(content))).getCurrentContent().getPlainText()}</p>}
-      <p className="text-xs text-gray-400 pt-2">{dayjs(updatedAt).fromNow()}</p>
+      <p className="text-xs text-secondary pt-2">{dayjs(updatedAt).fromNow()}</p>
     </div>
   )
 }

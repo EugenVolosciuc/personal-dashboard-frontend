@@ -26,7 +26,6 @@ export const NotesProvider = ({children}) => {
 
   const hasNextPage = data && !!data[data.length - 1].next
   const fetchNextPage = () => {
-    console.log("FIRING NEXT PAGE FETCHER")
     setSize(size + 1)
   }
 

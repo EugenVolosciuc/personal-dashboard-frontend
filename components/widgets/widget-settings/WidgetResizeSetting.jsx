@@ -10,7 +10,7 @@ const WidgetResizeSetting = ({ widget }) => {
 
   return (
     <div className={styles.ball} onClick={() => resizedWidget === widget._id ? toggleResizeWidgetMode() : toggleResizeWidgetMode(widget._id)}>
-      <FontAwesomeIcon icon={faCompress} size="xs" className="text-purple-500" />
+      <FontAwesomeIcon icon={faCompress} size="xs" className="text-accent" />
     </div>
   )
 }

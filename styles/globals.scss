@@ -26,6 +26,6 @@ input, button, div {
   @apply cursor-pointer;
 
   &-primary {
-    @apply hover:text-purple-500;
+    @apply hover:text-accent;
   }
 }

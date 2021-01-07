@@ -27,6 +27,6 @@ $ballWidth: 22px;
   .border {
     width: $ballWidth;
     height: $ballWidth;
-    @apply bg-purple-500 rounded-2xl;
+    @apply bg-accent rounded-2xl;
   }
 }

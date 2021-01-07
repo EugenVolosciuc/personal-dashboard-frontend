@@ -9,6 +9,7 @@ import { DashboardEditModeProvider } from 'utils/contexts/dashboardEditModeConte
 import { GridSizeProvider } from 'utils/contexts/gridSizeContext'
 import { WidgetPositionsProvider } from 'utils/contexts/widgetPositionsContext'
 import { WidgetResizeModeProvider } from 'utils/contexts/widgetResizeModeContext'
+import { ThemeProvider } from 'utils/contexts/themeContext'
 import useSidebar from 'utils/hooks/useSidebar'
 
 const DashboardLayout = ({ children }) => {
@@ -16,23 +17,25 @@ const DashboardLayout = ({ children }) => {
 
   return (
     <div className="w-full flex justify-end relative">
-      <DndProvider backend={HTML5Backend}>
-        <DashboardEditModeProvider>
-          <GridSizeProvider>
-            <WidgetPositionsProvider>
-              <WidgetResizeModeProvider>
-                <Sidebar />
-                <div className={`${styles['content-container']} ${sidebarIsOpen ? styles['sidebar-open'] : ''}`}>
-                  <DashboardNavbar />
-                  <div className={styles.content}>
-                    {children}
+      <ThemeProvider>
+        <DndProvider backend={HTML5Backend}>
+          <DashboardEditModeProvider>
+            <GridSizeProvider>
+              <WidgetPositionsProvider>
+                <WidgetResizeModeProvider>
+                  <Sidebar />
+                  <div className={`${styles['content-container']} ${sidebarIsOpen ? styles['sidebar-open'] : ''}`}>
+                    <DashboardNavbar />
+                    <div className={styles.content}>
+                      {children}
+                    </div>
                   </div>
-                </div>
-              </WidgetResizeModeProvider>
-            </WidgetPositionsProvider>
-          </GridSizeProvider>
-        </DashboardEditModeProvider>
-      </DndProvider>
+                </WidgetResizeModeProvider>
+              </WidgetPositionsProvider>
+            </GridSizeProvider>
+          </DashboardEditModeProvider>
+        </DndProvider>
+      </ThemeProvider>
     </div>
   )
 }

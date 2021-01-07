@@ -62,7 +62,7 @@ $ballWidth: 22px;
       left: 50%;
       z-index: 3;
 
-      @apply shadow bg-white flex justify-center items-center absolute cursor-pointer;
+      @apply shadow bg-primary flex justify-center items-center absolute cursor-pointer;
     }
   }
 }

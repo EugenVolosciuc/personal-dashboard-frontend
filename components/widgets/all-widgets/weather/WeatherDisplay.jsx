@@ -11,7 +11,7 @@ import { widgetPositionContext } from 'components/widgets/WidgetPositioner'
 
 const SingleWeatherData = ({ leftSide, rightSide }) => {
   return (
-    <div className="flex justify-between items-center border-b border-gray-300 py-2">
+    <div className="flex justify-between items-center border-b border-secondary py-2">
       {leftSide}
       {rightSide}
     </div>
@@ -38,7 +38,6 @@ const DayTabContent = ({ weatherData }) => {
 }
 
 const NextDaysTabContent = ({ weatherData }) => {
-  console.log("NEXT DAYS WEATHER", weatherData)
   return (
     <div>
       {weatherData.map(day => (
@@ -107,8 +106,6 @@ const WeatherDisplay = () => {
       </>
     )
   }
-
-  console.log("data", data)
 
   return renderContent()
 }

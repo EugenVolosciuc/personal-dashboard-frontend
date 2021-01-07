@@ -1,11 +1,11 @@
 @import 'styles/variables.scss';
 
 .menu-item {
-  @apply cursor-pointer flex justify-between items-center;
+  @apply cursor-pointer flex justify-between items-center text-primary;
 }
 
 .active {
-  @apply border-purple-500 border-l-4;
+  @apply border-accent border-l-4;
 }
 
 .side {
@@ -23,7 +23,7 @@
 
 .arrow {
   transition: color $transitionFast, transform $transitionFast;
-  @apply hover:text-purple-500;
+  @apply hover:text-accent border-accent;
 
   &.rotated {
     transform: rotate(180deg);

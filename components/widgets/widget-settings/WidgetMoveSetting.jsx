@@ -31,7 +31,7 @@ const WidgetMoveSetting = ({ widget, setWidgetIsMoving }) => {
 
   return (
     <div ref={drag} className={styles.ball}>
-      <FontAwesomeIcon icon={faArrowsAlt} size="xs" className="text-purple-500" />
+      <FontAwesomeIcon icon={faArrowsAlt} size="xs" className="text-accent" />
     </div>
   )
 }

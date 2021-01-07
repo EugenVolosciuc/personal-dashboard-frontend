@@ -3,7 +3,7 @@
 .clear-input {
   transition: border $transitionFast;
   width: 100%;
-  @apply pb-2 border-gray-300 border-b-2 focus:border-purple-500;
+  @apply pb-2 border-secondary border-b-2 focus:border-accent;
 
   &.sm {
     @apply text-base;

@@ -50,7 +50,7 @@ const WidgetDropZone = () => {
 
       {isEmpty(widgetPositions) && !isValidating && !dashboardEditMode &&
         <div className="w-full h-full flex justify-center items-center">
-          <p className="text-center text-lg font-medium text-gray-400">Add new widgets by dragging the desired widget to the screen.</p>
+          <p className="text-center text-lg font-medium text-secondary">Add new widgets by dragging the desired widget to the screen.</p>
         </div>
       }
 

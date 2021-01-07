@@ -2,14 +2,14 @@
 
 .note {
   transition: border $transitionFast;
-  @apply border-b-2 border-gray-300 hover:border-purple-500;
+  @apply border-b-2 border-secondary hover:border-accent;
 
   &:last-of-type {
-    @apply border-transparent hover:border-purple-500;
+    @apply border-transparent hover:border-accent;
   }
 
   &.selected {
-    @apply border-b-2 border-purple-500;
+    @apply border-b-2 border-accent;
   }
 }
 

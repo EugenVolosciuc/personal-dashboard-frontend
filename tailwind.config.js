@@ -7,7 +7,24 @@ module.exports = {
   purge: ['./pages/**/*.js', './components/**/*.js'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      // https://jeffjadulco.com/blog/dark-mode-react-tailwind/
+      backgroundColor: {
+        accent: "var(--color-accent)",
+        primary: "var(--color-bg-primary)",
+        secondary: "var(--color-bg-secondary)",
+      },
+      textColor: {
+        accent: "var(--color-accent)",
+        primary: "var(--color-text-primary)",
+        secondary: "var(--color-text-secondary)",
+      },
+      borderColor: {
+        accent: "var(--color-accent)",
+        primary: "var(--color-bg-primary)",
+        secondary: "var(--color-bg-secondary)",
+      }
+    },
     colors: {
       ...colors,
       black: '#161925',
@@ -18,8 +35,9 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    // Currently not used
     // https://github.com/tailwindlabs/tailwindcss/pull/560#issuecomment-503222143
-    function({ addUtilities, e, theme, variants }) {
+    function ({ addUtilities, e, theme, variants }) {
       const colors = flattenColorPalette(theme('borderColor'))
 
       const utilities = flatMap(omit(colors, 'default'), (value, modifier) => ({

@@ -100,7 +100,7 @@ const NoteModal = ({ isOpen, handleClose }) => {
       height={styles.height}
     >
       <div className="flex h-full">
-        <div className={`h-full flex flex-col border-gray-300 pr-4 ${styles.list} ${note ? styles['show-editor'] : ''}`}>
+        <div className={`h-full flex flex-col border-secondary pr-4 ${styles.list} ${note ? styles['show-editor'] : ''}`}>
           <header className="flex-shrink mb-4 flex justify-between items-center">
             <h3 className="font-bold text-2xl">Notes</h3>
             <div>

@@ -20,7 +20,7 @@ const Sidebar = () => {
     <div className={`${styles.sidebar} ${sidebarIsOpen ? styles.open : ''}`}>
       {/* Removed SidebarToggle to avoid issues with widget positioning on resize */}
       {/* <SidebarToggle /> */}
-      <div className="w-full h-full z-30 bg-white relative">
+      <div className="w-full h-full z-30 bg-primary relative">
         <div className={styles['logo-container']}>
           <p className={styles.logo}>Dashboard</p>
         </div>
