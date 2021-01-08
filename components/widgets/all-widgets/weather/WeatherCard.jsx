@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 
 import { Card } from 'components/ui'
 import { useAuth } from 'utils/contexts/auth'
 import WeatherDisplay from 'components/widgets/all-widgets/weather/WeatherDisplay'
 import LocationSetter from 'components/widgets/all-widgets/weather/LocationSetter'
 import useErrorHandler from 'utils/hooks/useErrorHandler'
+import Dropdown from 'components/ui/Dropdown'
 
 const WeatherCard = () => {
+  const [isChangingLocation, setIsChangingLocation] = useState(false)
   const { user, setUser } = useAuth()
   const errorHandler = useErrorHandler()
 
@@ -20,28 +24,30 @@ const WeatherCard = () => {
     }
   }
 
-  const unitToggler = (
-    <p className="text-sm">
-      <span
-        onClick={toggleUnits}
-        className={`cursor-pointer ${user.units === 'metric' ? 'font-bold' : ''}`}>
-        &#176;C
-      </span>
-      <span> | </span>
-      <span
-        onClick={toggleUnits}
-        className={`cursor-pointer ${user.units === 'imperial' ? 'font-bold' : ''}`}>
-        &#176;F
-      </span>
-    </p>
-  )
+  const optionItems = [
+    {
+      title: `Switch to ${String.fromCharCode(176)}${user.units === 'metric' ? 'F' : 'C'}`,
+      onClick: toggleUnits
+    },
+    {
+      title: isChangingLocation ? 'Close location changer' : 'Change location',
+      onClick: () => setIsChangingLocation(!isChangingLocation)
+    }
+  ]
 
   return (
-    <Card title="Weather" extra={ user?.location && unitToggler }>
-      {user?.location
-        ? <WeatherDisplay />
-        : <LocationSetter />
+    <Card
+      title="Weather"
+      extra={user?.location && (
+        <Dropdown
+          toggler={<FontAwesomeIcon icon={faEllipsisV} className="icon-hover icon-hover-primary" />}
+          items={optionItems}
+        />
+      )}>
+      {(!user?.location || isChangingLocation)
+        && <LocationSetter isChangingLocation={isChangingLocation} setIsChangingLocation={setIsChangingLocation} />
       }
+      {user?.location && <WeatherDisplay />}
     </Card>
   )
 }

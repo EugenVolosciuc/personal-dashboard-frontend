@@ -1,0 +1,13 @@
+@import 'styles/variables.scss';
+
+.items-container {
+  @apply absolute right-0 bg-primary px-4 py-2 shadow rounded-lg flex flex-col;
+
+  .item {
+    @apply whitespace-nowrap border-b border-secondary py-1 cursor-pointer;
+
+    &:last-of-type {
+      @apply border-none;
+    }
+  }
+}

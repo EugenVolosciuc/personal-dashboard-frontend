@@ -27,15 +27,15 @@
 }
 
 .primary {
-  @apply bg-accent text-primary border-transparent border;
+  @apply bg-accent text-inverted border-transparent border;
 }
 
 .secondary {
-  @apply border-accent bg-accent border-2 bg-transparent text-black;
+  @apply border-accent border-2 bg-transparent text-black;
 }
 
 .danger {
-  @apply bg-red-600 text-primary border-transparent;
+  @apply bg-red-600 text-inverted border-transparent;
 }
 
 .disabled {

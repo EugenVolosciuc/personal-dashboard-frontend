@@ -59,7 +59,7 @@ const NextDaysTabContent = ({ weatherData }) => {
 const WeatherDisplay = () => {
   const widgetPosition = useContext(widgetPositionContext)
   const { user, setUser } = useAuth()
-  const { data, isValidating } = useSWR([`/weather`, user.units], fetcher)
+  const { data, isValidating } = useSWR([`/weather`, user.units, user.location.city], fetcher)
 
   // data && data.hourly.forEach(hour => console.log("TIME!!!", dayjs.unix(hour.dt).format('DD-MM-YYYY HH:mm')))
 
@@ -99,7 +99,7 @@ const WeatherDisplay = () => {
           </div>
           <div className={`w-full flex ${isOneByOne ? '' : 'justify-between'} ${isOneByOne ? 'flex-col' : 'flex-row-reverse'}`}>
             <p className="text-center">Feels like {Math.round(data.current.feels_like)}&#176;</p>
-            {user.location.city && <p className="text-center font-bold">{user.location.city}</p>}
+            {user.location.city && <p className="text-center font-bold capitalize">{user.location.city}</p>}
           </div>
         </div>
         {isMoreThanOneByOne && <div className="mt-2"><Tabs items={tabItems} align="center" /></div>}

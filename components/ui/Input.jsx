@@ -12,10 +12,11 @@ const Input = ({
   placeholder = '',
   fullWidth = false,
   error = null,
-  defaultValue = ''
+  defaultValue = '',
+  size = 'md'
 }) => {
   return (
-    <div className={`${styles['input-container']} ${fullWidth ? styles['full-width'] : ''}`}>
+    <div className={`${styles['input-container']} ${fullWidth ? styles['full-width'] : ''} ${styles[size]}`}>
       <div className="flex flex-col">
         {label && <label className="font-bold">{label}</label>}
         <input

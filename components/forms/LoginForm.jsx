@@ -7,11 +7,13 @@ import { useRouter } from 'next/router'
 import styles from './styles/LoginForm.module.scss'
 import { Input, Button } from 'components/ui'
 import { useAuth } from 'utils/contexts/auth'
+import useErrorHandler from 'utils/hooks/useErrorHandler'
 
 const LoginForm = () => {
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { register, handleSubmit, watch, errors, setError } = useForm()
   const { user, setUser, userIsLoading, setUserIsLoading } = useAuth()
   const router = useRouter()
+  const errorHandler = useErrorHandler()
 
   const onSubmit = async values => {
     const { email, password } = values
@@ -23,7 +25,7 @@ const LoginForm = () => {
       setUser(data)
       router.push('/dashboard')
     } catch (error) {
-      console.log("ERROR LOGGING IN", error)
+      errorHandler(error, setError)
       setUserIsLoading(false)
     }
   }
@@ -49,7 +51,7 @@ const LoginForm = () => {
           label="Password"
           error={errors.password} />
         <div className="mt-6">
-          <Button type="primary" htmlType="submit" fullWidth>Login</Button>
+          <Button type="primary" htmlType="submit" size="sm" fullWidth>Login</Button>
         </div>
       </form>
     </div>

@@ -7,6 +7,7 @@
   --color-bg-secondary: #283141;
   --color-text-primary: #f7fafc;
   --color-text-secondary: #e2e8f0;
+  --color-text-inverted: #283141;
   --color-accent: #81e6d9;
 }
 
@@ -15,6 +16,7 @@
   --color-bg-secondary: #edf2f7;
   --color-text-primary: #2d3748;
   --color-text-secondary: #4a5568;
+  --color-text-inverted: #edf2f7;
   --color-accent: #2b6cb0;
 }
 

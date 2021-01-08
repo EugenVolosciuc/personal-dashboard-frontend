@@ -18,6 +18,7 @@ module.exports = {
         accent: "var(--color-accent)",
         primary: "var(--color-text-primary)",
         secondary: "var(--color-text-secondary)",
+        inverted: "var(--color-text-inverted)"
       },
       borderColor: {
         accent: "var(--color-accent)",

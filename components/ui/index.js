@@ -9,6 +9,7 @@ import ClearInput from './ClearInput'
 import Loader from './Loader'
 import Tabs from './Tabs'
 import TabItem from './TabItem'
+import Dropdown from './Dropdown'
 
 export {
   Button,
@@ -21,5 +22,6 @@ export {
   ClearInput,
   Loader,
   Tabs,
-  TabItem
+  TabItem,
+  Dropdown
 }
