@@ -1,6 +1,6 @@
 @import 'styles/variables.scss';
 
-$settingsContainerWidth: 40px;
+$settingsContainerWidth: 30px;
 $ballWidth: 22px;
 
 .widget-positioner {
@@ -8,62 +8,66 @@ $ballWidth: 22px;
   opacity: 1;
   z-index: 1;
   @apply fixed;
-  
-  .widget-settings {
+
+  .left-top, .right-top {
     opacity: 0;
     transition: opacity $transitionFast;
-    right: calc(#{-$settingsContainerWidth} / 2);
-    top: calc(#{-$settingsContainerWidth} / 2);
+
     width: $settingsContainerWidth;
     height: $settingsContainerWidth;
     @apply absolute;
-    
+
     &:hover {
       opacity: 1;
-
-      // For two setting balls
+  
       .ball {
         z-index: 50;
-        &:first-of-type {
-          transform: translate(-120%, -80%);
-        }
-
-        &:last-of-type {
-          transition-delay: .01s;
-          transform: translate(-20%, 20%);
-        }
       }
-
-      // For three setting balls
-      // .ball {
-      //   &:first-of-type {
-      //     transform: translate(-200%, -100%);
-      //   }
-  
-      //   &:nth-of-type(2) {
-      //     transition-delay: .01s;
-      //     transform: translate(-35%, -65%);
-      //   }
-  
-      //   &:last-of-type {
-      //     transition-delay: .02s;
-      //     transform: translate(0%, 100%);
-      //   }
-      // }
     }
+  }
+
+  .left-top {
+    left: calc(#{-$settingsContainerWidth} / 2);
+    top: calc(#{-$settingsContainerWidth} / 2);
 
     .ball {
-      transition: transform $transitionFast;
-      width: $ballWidth;
-      height: $ballWidth;
-      border-radius: 50%;
-      transform: translate(-150%, 50%);
-      top: 50%;
-      left: 50%;
-      z-index: 3;
-
-      @apply shadow bg-primary flex justify-center items-center absolute cursor-pointer;
+        transform: translate(35%, 35%);
     }
+
+    &:hover {
+      .ball {
+        transform: translate(-10%, -10%);
+      }
+    }
+  }
+
+  .right-top {
+    right: calc(#{-$settingsContainerWidth} / 2);
+    top: calc(#{-$settingsContainerWidth} / 2);
+
+    .ball {
+        transform: translate(-55%, 35%);
+    }
+
+    &:hover {
+
+      .ball {
+        transform: translate(-10%, -10%);
+      }
+    }
+  }
+
+  .ball {
+    transition: transform $transitionFast;
+    width: $ballWidth;
+    height: $ballWidth;
+    border-radius: 50%;
+    // transform: translate(-150%, 50%);
+    top: 25%;
+    left: 25%;
+    z-index: 3;
+
+    @apply shadow bg-primary flex justify-center items-center absolute cursor-pointer;
   }
 }
 
