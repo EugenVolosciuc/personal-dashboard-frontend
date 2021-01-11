@@ -12,7 +12,7 @@ const Sidebar = () => {
     {
       label: 'Widgets',
       subItems: Object.values(WIDGET_LIST)
-      // href: '/auth/sign-up'
+      // href: '/auth/register'
     }
   ]), [])
 

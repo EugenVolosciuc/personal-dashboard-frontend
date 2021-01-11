@@ -12,12 +12,12 @@
 }
 
 .light {
-  --color-bg-primary: #ffffff;
+  --color-bg-primary: #f4faff;
   --color-bg-secondary: #edf2f7;
-  --color-text-primary: #2d3748;
+  --color-text-primary: #2c2543;
   --color-text-secondary: #4a5568;
   --color-text-inverted: #edf2f7;
-  --color-accent: #2b6cb0;
+  --color-accent: #fc4445;
 }
 
 @tailwind base;

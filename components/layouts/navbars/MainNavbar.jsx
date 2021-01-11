@@ -10,15 +10,15 @@ const MainNavbar = () => {
       href: '/auth/login'
     },
     {
-      label: 'Sign up',
-      href: '/auth/sign-up'
+      label: 'Register',
+      href: '/auth/register'
     }
   ]), [])
 
   return (
     <nav className={styles.navbar}>
       <div className={styles['logo-container']}>
-        <p className={styles.logo}>Dashboard</p>
+        <p className={styles.logo}><img src="/assets/logo.svg" alt="Logo" /> <span className="ml-2">planster</span></p>
       </div>
       <div className={styles['menu-container']}>
         {menuItems.map(item => <MenuItem key={item.label} menuData={item} menuType="top" />)}

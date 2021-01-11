@@ -23,7 +23,7 @@ const SignUpForm = () => {
 
   return (
     <div className={styles['sign-up-form']}>
-      <h3 className="text-center font-bold text-2xl mb-4">Sign Up</h3>
+      <h3 className="text-center font-bold text-5xl mb-4">Register</h3>
       <form onSubmit={handleSubmit(signUp)}>
         <Input
           name="username"

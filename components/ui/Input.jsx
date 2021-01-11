@@ -18,11 +18,12 @@ const Input = ({
   return (
     <div className={`${styles['input-container']} ${fullWidth ? styles['full-width'] : ''} ${styles[size]}`}>
       <div className="flex flex-col">
-        {label && <label className="font-bold">{label}</label>}
+        {label && <label htmlFor={"input-" + name} className="text-sm">{label}</label>}
         <input
           className={styles.input}
           type={type}
           name={name}
+          id={"input-" + name}
           ref={formRef}
           placeholder={placeholder}
           defaultValue={defaultValue}

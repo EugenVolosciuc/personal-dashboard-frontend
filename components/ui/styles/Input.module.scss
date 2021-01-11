@@ -21,10 +21,11 @@
 
   .input {
     transition: all $transitionFast;
-    @apply w-full bg-secondary border-transparent border-2 rounded-lg mt-1;
+    @apply w-full border-gray-200 border rounded-lg mt-1;
 
     &:focus {
-      @apply border-accent border-2 bg-primary;
+      border: solid 1px #96cbef;
+      box-shadow: rgba(150, 203, 239, 0.2) 0px 3px 8px;
     }
   }
 }

@@ -11,14 +11,14 @@
     transform: scale(0.95);
   }
 
-  @apply rounded-lg tracking-wider font-bold;
+  @apply rounded-full tracking-wider;
 
   &.sm {
-    @apply px-2 py-1 text-sm;
+    @apply px-2 py-1 text-base;
   }
 
   &.md {
-    @apply px-4 py-2 text-base;
+    @apply px-4 py-2 text-xl;
   }
 
   &.full-width {

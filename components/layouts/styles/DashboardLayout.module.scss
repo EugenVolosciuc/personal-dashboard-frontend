@@ -4,6 +4,7 @@
   width: 100%;
   transition: width $transitionMedium;
   position: relative;
+  @apply bg-primary;
 
   &.sidebar-open {
     width: calc(100% - #{$sidebarWidth});

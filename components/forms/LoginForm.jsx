@@ -51,7 +51,7 @@ const LoginForm = () => {
           label="Password"
           error={errors.password} />
         <div className="mt-6">
-          <Button type="primary" htmlType="submit" size="sm" fullWidth>Login</Button>
+          <Button type="primary" htmlType="submit" fullWidth>Login</Button>
         </div>
       </form>
     </div>
