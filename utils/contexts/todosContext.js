@@ -2,6 +2,8 @@ import { createContext } from 'react'
 import useSWR, { useSWRInfinite } from 'swr'
 import axios from 'axios'
 
+import { useAuth } from 'utils/contexts/auth'
+
 const todosContext = createContext({
   data: null,
   error: null,
@@ -23,12 +25,14 @@ const fetchTodos = async (url, completed) => {
 }
 
 export const TodosProvider = ({ children }) => {
+  const { user } = useAuth()
+
   const {
     data: nonCompletedTodos,
     mutate: mutateNonCompletedTodos,
     isValidating: nonCompletedTodosAreValidating,
     error: nonCompletedTodosError
-  } = useSWR('/todos', url => fetchTodos(url, false))
+  } = useSWR(user ? '/todos' : null, url => fetchTodos(url, false))
 
   const {
     data: completedTodos,
@@ -38,7 +42,7 @@ export const TodosProvider = ({ children }) => {
     setSize: setCompletedTodosSize,
     isValidating: completedTodosAreValidating
   } = useSWRInfinite(
-    index => `/todos?page=${index + 1}`,
+    user ? index => `/todos?page=${index + 1}` : null,
     url => fetchTodos(url, true)
   )
 

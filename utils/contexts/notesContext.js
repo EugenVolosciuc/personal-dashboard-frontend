@@ -15,12 +15,10 @@ const notesContext = createContext({
 })
 
 export const NotesProvider = ({children}) => {
-  // const { user } = useAuth()
+  const { user } = useAuth()
 
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
-    index => {
-      return `${URL}?page=${index + 1}`
-    },
+    user ? index => `${URL}?page=${index + 1}` : null,
     fetcher
   )
 
