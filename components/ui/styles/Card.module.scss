@@ -1,6 +1,6 @@
 .card {
   // width: 350px; // TODO: remove when width will be set from the grid
-  @apply bg-primary rounded-2xl p-4 flex flex-col shadow-md w-full h-full;
+  @apply bg-white rounded-2xl p-4 flex flex-col shadow-md w-full h-full;
 
   .header {
     @apply pb-4 flex justify-between items-center;
