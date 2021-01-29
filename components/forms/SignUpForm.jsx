@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { isEmail } from 'validator'
 import axios from 'axios'
@@ -8,22 +8,26 @@ import styles from './styles/SignUpForm.module.scss'
 import { Input, Button } from 'components/ui'
 
 const SignUpForm = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const { register, handleSubmit, watch, errors } = useForm()
   const router = useRouter()
 
   const signUp = async values => {
     const { username, email, password } = values
     try {
+      setIsLoading(true)
       await axios.post('/users', { username, email, password })
+      setIsLoading(false)
       router.push('/auth/login')
     } catch (error) {
+      setIsLoading(false)
       console.log("ERROR creating user", error)
     }
   }
 
   return (
     <div className={styles['sign-up-form']}>
-      <h3 className="text-center font-bold text-5xl mb-4">Register</h3>
+      <h3 className="text-center font-bold text-4xl mb-4">Register</h3>
       <form onSubmit={handleSubmit(signUp)}>
         <Input
           name="username"
@@ -60,7 +64,7 @@ const SignUpForm = () => {
           label="Confirm password"
           error={errors.confirmPassword} />
         <div className="mt-6">
-          <Button type="primary" htmlType="submit" fullWidth>Sign Up</Button>
+          <Button loading={isLoading} type="primary" htmlType="submit" fullWidth>Sign Up</Button>
         </div>
       </form>
     </div>

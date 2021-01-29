@@ -4,7 +4,6 @@
  * @returns {Object} Horizontal length and vertical length
  */
 export const getGridLengthUnits = gridDot => {
-
   // Get index of the clicked dot in row
   let indexOfClickedDot = 0
   let gridDotClone = gridDot.cloneNode() // Cloning node so that gridDot isn't mutated
@@ -94,8 +93,8 @@ export const checkCanDrop = (gridSize, dropCoordinates, widgetPositions, widgetW
       if (position._id === oldWidgetPosition._id) return
     }
 
-    const xAxisOverlaps = dropCoordinates.x > position.x - widgetWidth && dropCoordinates.x < position.x + widgetWidth
-    const yAxisOverlaps = dropCoordinates.y > position.y - widgetHeight && dropCoordinates.y < position.y + widgetHeight
+    const xAxisOverlaps = dropCoordinates.x > position.x - position.width && dropCoordinates.x < position.x + position.width
+    const yAxisOverlaps = dropCoordinates.y + widgetHeight > position.y && dropCoordinates.y + widgetHeight <= position.y + position.height
 
     return xAxisOverlaps && yAxisOverlaps
   })

@@ -1,16 +1,18 @@
 import React from 'react'
 
 import styles from './styles/Button.module.scss'
+import { Loader } from 'components/ui'
 
 const types = ['primary', 'secondary']
 
-const Button = ({ 
-  children, 
-  className = '', 
-  type = 'secondary', 
-  htmlType = 'button', 
-  onClick = () => null, 
-  disabled = false, 
+const Button = ({
+  children,
+  loading = false,
+  className = '',
+  type = 'secondary',
+  htmlType = 'button',
+  onClick = () => null,
+  disabled = false,
   fullWidth = false,
   size = 'md',
   buttonRef = null,
@@ -27,6 +29,7 @@ const Button = ({
       onClick={onClick}
       className={finalClassName}>
       {children}
+      {loading && <span className="ml-2"><Loader color={type === "secondary" ? "accent" : "white"} /></span>}
     </button>
   )
 }

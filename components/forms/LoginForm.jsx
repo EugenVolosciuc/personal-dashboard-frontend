@@ -10,8 +10,8 @@ import { useAuth } from 'utils/contexts/auth'
 import useErrorHandler from 'utils/hooks/useErrorHandler'
 
 const LoginForm = () => {
-  const { register, handleSubmit, watch, errors, setError } = useForm()
-  const { user, setUser, userIsLoading, setUserIsLoading } = useAuth()
+  const { register, handleSubmit, errors, setError } = useForm()
+  const { setUser, userIsLoading, setUserIsLoading } = useAuth()
   const router = useRouter()
   const errorHandler = useErrorHandler()
 
@@ -32,7 +32,7 @@ const LoginForm = () => {
 
   return (
     <div className={styles['login-form']}>
-      <h3 className="text-center font-bold text-2xl mb-4">Login</h3>
+      <h3 className="text-center font-bold text-4xl mb-4">Login</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           name="email"
@@ -51,7 +51,7 @@ const LoginForm = () => {
           label="Password"
           error={errors.password} />
         <div className="mt-6">
-          <Button type="primary" htmlType="submit" fullWidth>Login</Button>
+          <Button loading={userIsLoading} type="primary" htmlType="submit" fullWidth>Login</Button>
         </div>
       </form>
     </div>

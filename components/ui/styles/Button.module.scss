@@ -14,11 +14,11 @@
   @apply rounded-full tracking-wider;
 
   &.sm {
-    @apply px-2 py-1 text-base;
+    @apply px-3 py-1 text-base;
   }
 
   &.md {
-    @apply px-4 py-2 text-xl;
+    @apply px-4 py-2 text-lg;
   }
 
   &.full-width {
