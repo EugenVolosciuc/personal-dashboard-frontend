@@ -5,8 +5,8 @@ import NotesListItem from 'components/widgets/all-widgets/notes/NotesListItem'
 import useIntersectionObserver from 'utils/hooks/useIntersectionObserver'
 import useNotes from 'utils/hooks/useNotes'
 
-const NotesList = ({ handleNoteClick, selectedNote }) => {
-  const { data, error, mutate, isValidating, hasNextPage, fetchNextPage } = useNotes()
+const NotesList = ({ handleNoteClick, selectedNote, swr }) => {
+  const { data, error, mutate, isValidating, hasNextPage, fetchNextPage } = swr
   const lastItemRef = useRef()
 
   // useIntersectionObserver({

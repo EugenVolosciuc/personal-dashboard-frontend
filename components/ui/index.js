@@ -10,6 +10,7 @@ import Loader from './Loader'
 import Tabs from './Tabs'
 import TabItem from './TabItem'
 import Dropdown from './Dropdown'
+import SingleFormInput from './SingleFormInput'
 
 export {
   Button,
@@ -23,5 +24,6 @@ export {
   Loader,
   Tabs,
   TabItem,
-  Dropdown
+  Dropdown,
+  SingleFormInput
 }

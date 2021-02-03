@@ -1,11 +1,7 @@
 @import 'styles/variables.scss';
 
 .button {
-  transition: transform $transitionFast;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  transition: transform $transitionFast, background-color $transitionFast;
 
   &:active {
     transform: scale(0.95);
@@ -28,14 +24,26 @@
 
 .primary {
   @apply bg-accent text-inverted border-transparent border;
+
+  &:hover {
+    @apply bg-red-400;
+  }
 }
 
 .secondary {
   @apply border-accent border-2 bg-transparent text-black;
+
+  &:hover {
+    @apply border-red-400;
+  }
 }
 
 .danger {
   @apply bg-red-600 text-inverted border-transparent;
+
+  &:hover {
+    @apply border-red-500;
+  }
 }
 
 .disabled {

@@ -10,7 +10,6 @@ import 'styles/package-overrides.scss'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 const options = {
-  // you can also just use 'bottom center'
   position: positions.TOP_CENTER,
   timeout: 5000,
   offset: '20px',

@@ -2,6 +2,8 @@ import { useState, useEffect, createContext } from 'react'
 import debounce from 'lodash/debounce'
 import axios from 'axios'
 
+import useErrorHandler from 'utils/hooks/useErrorHandler'
+
 let cancelToken
 
 const gridSizeContext = createContext({
@@ -14,6 +16,7 @@ const MIN_DOT_DISTANCE_HEIGHT = 140
 
 export const GridSizeProvider = ({ children }) => {
   const [gridSize, setGridSize] = useState({ width: 10, height: 6 })
+  const errorHandler = useErrorHandler()
 
   const fetchGridSizeData = async (width, height) => {
     if (typeof cancelToken != typeof undefined) {
@@ -27,8 +30,7 @@ export const GridSizeProvider = ({ children }) => {
 
       return { width, height, id: data._id }
     } catch (error) {
-      if (axios.isCancel(error)) return
-      console.log("ERROR FETCHING GRID SIZE", error)
+      errorHandler(error)
     }
 
     return { width, height, id: null }

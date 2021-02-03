@@ -1,15 +1,22 @@
+import axios from 'axios'
 import { useAlert } from 'react-alert'
 import { useRouter } from 'next/router'
+
+import { useAuth } from 'utils/contexts/auth'
 
 const useErrorHandler = () => {
   const alert = useAlert()
   const router = useRouter()
+  const { setUser } = useAuth()
 
   const errorHandler = (error, setError) => {
+    if (axios.isCancel(error)) return
+
     if (error.response) {
       const { data, status, statusText } = error.response
 
       if (status === 401) {
+        setUser(null)
         router.push('/auth/login')
       } else if (status === 400) {
         if (setError) {

@@ -1,6 +1,7 @@
 
 import React, { useMemo } from 'react'
 import isEmpty from 'lodash/isEmpty'
+import isArray from 'lodash/isArray'
 
 import { Loader } from 'components/ui'
 import WidgetPositioner from 'components/widgets/WidgetPositioner'
@@ -14,7 +15,7 @@ const WidgetDropZone = () => {
   const { dashboardEditMode } = useDashboardEditMode()
   const { widgetPositions, isValidating } = useWidgetPositions()
 
-  const renderWidgets = () => widgetPositions && widgetPositions.map(position => {
+  const renderWidgets = () => isArray(widgetPositions) && widgetPositions.map(position => {
     const widget = WIDGET_LIST[position.title]
 
     const widthHeightPosition = getWidthHeightPositionOfWidget(

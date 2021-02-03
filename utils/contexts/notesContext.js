@@ -3,6 +3,7 @@ import { useSWRInfinite } from 'swr'
 
 import { fetcher } from 'config/axios'
 import { useAuth } from 'utils/contexts/auth'
+import useErrorHandler from 'utils/hooks/useErrorHandler'
 
 const URL = '/notes'
 
@@ -16,10 +17,11 @@ const notesContext = createContext({
 
 export const NotesProvider = ({children}) => {
   const { user } = useAuth()
+  const errorHandler = useErrorHandler()
 
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
     user ? index => `${URL}?page=${index + 1}` : null,
-    fetcher
+    url => fetcher(url, errorHandler)
   )
 
   const hasNextPage = data && !!data[data.length - 1].next

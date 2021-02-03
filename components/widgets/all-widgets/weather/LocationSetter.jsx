@@ -36,7 +36,7 @@ const LocationSetter = ({ isChangingLocation, setIsChangingLocation }) => {
   }
 
   const getGeolocationAutomatically = async () => {
-    const success = await updateUserLocation(position)
+    const success = async position => await updateUserLocation(position)
     const failure = () => console.log("Can't get location, should show error message")
 
     navigator.geolocation.getCurrentPosition(
