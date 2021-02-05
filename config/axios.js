@@ -4,9 +4,11 @@ axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://localho
 axios.defaults.withCredentials = true
 axios.defaults.params = {}
 
-export const fetcher = async (url, errorHandler) => {
+export const fetcher = async (url, params, errorHandler) => {
   try {
-    const { data } = await axios.get(url)
+    const { data } = await axios.get(url, {
+      params
+    })
 
     return data
   } catch (error) {

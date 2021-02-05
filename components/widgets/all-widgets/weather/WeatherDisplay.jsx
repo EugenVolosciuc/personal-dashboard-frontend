@@ -62,7 +62,7 @@ const WeatherDisplay = () => {
   const widgetPosition = useContext(widgetPositionContext)
   const { user } = useAuth()
   const errorHandler = useErrorHandler()
-  const { data, isValidating } = useSWR([`/weather`, user.units, user.location.city], url => fetcher(url, errorHandler))
+  const { data, isValidating } = useSWR([`/weather`, user.units, user.location.city], url => fetcher(url, {}, errorHandler))
 
   const renderContent = () => {
     const { width, height } = widgetPosition

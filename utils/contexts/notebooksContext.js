@@ -16,7 +16,7 @@ export const NotebooksProvider = ({children}) => {
 
   const { data, error, mutate, isValidating } = useSWR(
     user ? '/notebooks' : null, 
-    url => fetcher(url, errorHandler)
+    url => fetcher(url, {}, errorHandler)
   )
 
   return (

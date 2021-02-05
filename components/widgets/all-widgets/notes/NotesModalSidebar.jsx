@@ -3,35 +3,17 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { SingleFormInput } from 'components/ui'
-import { useSWRInfinite } from 'swr'
 
 import styles from 'components/widgets/styles/NotesModal.module.scss'
-import { fetcher } from 'config/axios'
 import NotesList from 'components/widgets/all-widgets/notes/NotesList'
 import NotebooksList from 'components/widgets/all-widgets/notes/NotebooksList'
 import useErrorHandler from 'utils/hooks/useErrorHandler'
 import useNotebooks from 'utils/hooks/useNotebooks'
-import { useAuth } from 'utils/contexts/auth'
 
-const NotesModalSidebar = ({ selectedNote, setSelectedNote, mutateNotes, emptyEditorContent }) => {
-  const [notebook, setNotebook] = useState(null)
+const NotesModalSidebar = ({ notebook, setNotebook, notebookNotes, selectedNote, setSelectedNote, mutateNotes, emptyEditorContent }) => {
   const [showNewNotebookInput, setShowNewNotebookInput] = useState(false)
-  const { user } = useAuth()
   const { mutate } = useNotebooks()
   const errorHandler = useErrorHandler()
-
-  const swr = useSWRInfinite(
-    user && notebook ? index => `/notes?page=${index + 1}&notebook=${notebook._id}` : null,
-    url => fetcher(url, errorHandler)
-  )
-
-  const hasNextPage = swr.data && !!swr.data[swr.data.length - 1].next
-  const fetchNextPage = () => {
-    swr.setSize(swr.size + 1)
-  }
-
-  swr.hasNextPage = hasNextPage
-  swr.fetchNextPage = fetchNextPage
 
   const toggleNewNotebookInput = () => setShowNewNotebookInput(!showNewNotebookInput)
   const createNewNote = async () => {
@@ -45,7 +27,7 @@ const NotesModalSidebar = ({ selectedNote, setSelectedNote, mutateNotes, emptyEd
         }
       )
       mutateNotes()
-      swr.mutate()
+      notebookNotes.mutate()
       setSelectedNote(data)
     } catch (error) {
       errorHandler(error)
@@ -98,13 +80,13 @@ const NotesModalSidebar = ({ selectedNote, setSelectedNote, mutateNotes, emptyEd
       <div className="overflow-y-auto flex-grow">
         {notebook
           ? <div className="mt-4">
-            <NotesList handleNoteClick={setSelectedNote} selectedNote={selectedNote} swr={swr} />
+            <NotesList handleNoteClick={setSelectedNote} selectedNote={selectedNote} swr={notebookNotes} />
           </div>
           : <NotebooksList
-              setNotebook={notebook => {
-                if (showNewNotebookInput) setShowNewNotebookInput(!showNewNotebookInput)
-                setNotebook(notebook)
-              }}
+            setNotebook={notebook => {
+              if (showNewNotebookInput) setShowNewNotebookInput(!showNewNotebookInput)
+              setNotebook(notebook)
+            }}
           />
         }
       </div>

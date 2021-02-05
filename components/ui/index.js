@@ -11,6 +11,7 @@ import Tabs from './Tabs'
 import TabItem from './TabItem'
 import Dropdown from './Dropdown'
 import SingleFormInput from './SingleFormInput'
+import Popover from './Popover'
 
 export {
   Button,
@@ -25,5 +26,6 @@ export {
   Tabs,
   TabItem,
   Dropdown,
-  SingleFormInput
+  SingleFormInput,
+  Popover
 }

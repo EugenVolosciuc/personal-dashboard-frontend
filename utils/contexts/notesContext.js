@@ -21,7 +21,7 @@ export const NotesProvider = ({children}) => {
 
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
     user ? index => `${URL}?page=${index + 1}` : null,
-    url => fetcher(url, errorHandler)
+    url => fetcher(url, {}, errorHandler)
   )
 
   const hasNextPage = data && !!data[data.length - 1].next

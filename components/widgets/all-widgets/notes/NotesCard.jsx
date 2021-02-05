@@ -19,7 +19,7 @@ const NotesCard = () => {
       extra={<FontAwesomeIcon onClick={() => toggleNotesModal(true)} icon={faPlus} className="icon-hover icon-hover-primary" />}
     >
       <NotesModal isOpen={showNotesModal} handleClose={toggleNotesModal} />
-      <NotesList handleNoteClick={toggleNotesModal} swr={swr} />
+      <NotesList handleNoteClick={toggleNotesModal} swr={swr} showLoader />
     </Card>
   )
 }

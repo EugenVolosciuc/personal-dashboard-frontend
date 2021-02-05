@@ -11,6 +11,17 @@
   &.selected {
     @apply border-b-2 border-accent;
   }
+
+  .actions-container {
+    transition: opacity $transitionFast;
+    opacity: 0;
+  }
+
+  &:hover {
+    .actions-container {
+      opacity: 1;
+    }
+  }
 }
 
 // https://css-tricks.com/line-clampin/
