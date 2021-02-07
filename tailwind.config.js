@@ -5,7 +5,7 @@ const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  purge: ['./pages/**/*.js', './components/**/*.js'],
+  purge: ['./pages/**/*.js', './components/**/*.js', './pages/**/*.jsx', './components/**/*.jsx'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
