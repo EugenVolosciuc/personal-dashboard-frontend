@@ -20,7 +20,7 @@ const Button = ({
 }) => {
   if (!types.includes(type)) throw new Error('Invalid type for button')
 
-  const finalClassName = `${className} ${styles.button} ${styles[type]} ${size === 'sm' ? styles.sm : styles.md} ${fullWidth ? styles['full-width'] : ''} ${disabled ? styles.disabled : ''} ${danger ? styles.danger : ''}`
+  const finalClassName = `${className} ${styles.button} ${styles[type]} ${styles[size]} ${fullWidth ? styles['full-width'] : ''} ${disabled ? styles.disabled : ''} ${danger ? styles.danger : ''}`
 
   return (
     <button

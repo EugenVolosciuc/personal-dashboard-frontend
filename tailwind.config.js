@@ -2,6 +2,7 @@ const flatMap = require('lodash/flatMap')
 const omit = require('lodash/omit')
 const colors = require('tailwindcss/colors')
 const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   purge: ['./pages/**/*.js', './components/**/*.js'],
@@ -36,6 +37,26 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    function({ addComponents }) {
+      addComponents({
+        '.text-container': {
+          maxWidth: '100%',
+          width: '100%',
+          '@screen sm': {
+            maxWidth: '640px'
+          },
+          '@screen md': {
+            maxWidth: '768px'
+          },
+          '@screen lg': {
+            maxWidth: '991px'
+          },
+          '@screen xl': {
+            maxWidth: '1200px'
+          }
+        }
+      })
+    },
     // Currently not used
     // https://github.com/tailwindlabs/tailwindcss/pull/560#issuecomment-503222143
     function ({ addUtilities, e, theme, variants }) {

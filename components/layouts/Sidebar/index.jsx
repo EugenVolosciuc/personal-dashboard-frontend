@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 
 import styles from '../styles/Sidebar.module.scss'
-import SidebarToggle from 'components/layouts/sidebar/SidebarToggle'
+// import SidebarToggle from 'components/layouts/Sidebar/SidebarToggle'
 import { MenuItem, NestedMenuItem } from 'components/ui'
 import WIDGET_LIST from 'constants/WIDGET_LIST'
 import useSidebar from 'utils/hooks/useSidebar'

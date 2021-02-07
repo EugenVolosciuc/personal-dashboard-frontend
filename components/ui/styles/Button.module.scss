@@ -2,6 +2,7 @@
 
 .button {
   transition: transform $transitionFast, background-color $transitionFast;
+  line-height: inherit;
 
   &:active {
     transform: scale(0.95);
@@ -10,11 +11,15 @@
   @apply rounded-full tracking-wider;
 
   &.sm {
-    @apply px-3 py-1 text-base;
+    @apply px-4 py-1 text-base;
   }
 
   &.md {
-    @apply px-4 py-2 text-lg;
+    @apply px-4 py-1 lg:px-5 lg:py-2 text-lg;
+  }
+
+  &.lg {
+    @apply px-5 py-2 lg:px-8 lg:py-3 text-xl;
   }
 
   &.full-width {
