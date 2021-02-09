@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from "react-hook-form"
 
-import { Button, Input } from 'components/ui'
+import { Button, Input, SingleFormInput } from 'components/ui'
 import { useAuth } from 'utils/contexts/auth'
 import useErrorHandler from 'utils/hooks/useErrorHandler'
 
@@ -72,14 +72,15 @@ const LocationSetter = ({ isChangingLocation, setIsChangingLocation }) => {
       {canGeolocate &&
         <>
           <form onSubmit={handleSubmit(handleFormSubmit)} className="flex justify-between items-center">
-            <Input
+            <SingleFormInput btnHtmlType="submit" placeholder="City" btnContent="Submit" />
+            {/* <Input
               size="sm"
               name="search"
               type="text"
               formRef={register({ required: { value: true, message: 'Location is required' } })}
               placeholder="City"
               error={errors.search} />
-            <Button type="primary" htmlType="submit" size="sm">Submit</Button>
+            <Button type="primary" htmlType="submit" size="sm">Submit</Button> */}
           </form>
           <p className="text-center my-2">or</p>
           <div className="w-full flex justify-center">

@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import isEmpty from 'lodash/isEmpty'
 import isArray from 'lodash/isArray'
 
-import { Loader } from 'components/ui'
+import { Loader, Empty } from 'components/ui'
 import WidgetPositioner from 'components/widgets/WidgetPositioner'
 import WIDGET_LIST from 'constants/WIDGET_LIST'
 import Grid from 'components/grid-system/Grid'
@@ -51,7 +51,8 @@ const WidgetDropZone = () => {
 
       {isEmpty(widgetPositions) && !isValidating && !dashboardEditMode &&
         <div className="w-full h-full flex justify-center items-center">
-          <p className="text-center text-lg font-medium text-secondary">Add new widgets by dragging the desired widget to the screen.</p>
+          <Empty textClassname="text-lg" content="Add new widgets by dragging the desired widget to the screen." />
+          {/* <p className="text-center text-lg font-medium text-secondary"></p> */}
         </div>
       }
 

@@ -10,8 +10,12 @@
 
   @apply rounded-full tracking-wider;
 
+  &.xs {
+    @apply px-2 py-1 text-sm leading-none;
+  }
+
   &.sm {
-    @apply px-4 py-1 text-sm leading-none;
+    @apply px-4 py-1 text-base;
   }
 
   &.md {

@@ -60,8 +60,8 @@ const NotesListItem = ({ note, mutate, handleNoteClick, lastItemRef, isSelected 
           handleClose={toggleDeletePopover}
           content="Are you sure you want to delete this note?"
           actions={[
-            <Button onClick={handleDeleteNote} size="sm">Yes</Button>,
-            <Button onClick={toggleDeletePopover} size="sm">No</Button>
+            <Button onClick={handleDeleteNote} size="xs">Yes</Button>,
+            <Button onClick={toggleDeletePopover} size="xs">No</Button>
           ]}
         >
           <span onClick={toggleDeletePopover}>

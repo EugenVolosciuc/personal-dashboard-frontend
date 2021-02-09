@@ -75,7 +75,7 @@ const NotesModalSidebar = ({ notebook, setNotebook, notebookNotes, selectedNote,
         </div>
       </header>
       {showNewNotebookInput &&
-        <SingleFormInput handleClick={createNewNotebook} placeholder="Notebook title" />
+        <SingleFormInput handleClick={createNewNotebook} placeholder="Notebook title" btnContent="Add" />
       }
       <div className="overflow-y-auto flex-grow">
         {notebook
