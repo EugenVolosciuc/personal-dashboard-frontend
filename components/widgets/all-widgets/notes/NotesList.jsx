@@ -26,6 +26,7 @@ const NotesList = ({ handleNoteClick, selectedNote, swr, showLoader }) => {
           return <NotesListItem 
             key={note._id}
             note={note}
+            mutate={mutate}
             isSelected={note._id === selectedNote?._id}
             handleNoteClick={handleNoteClick}
             lastItemRef={isLastItem ? lastItemRef : null}

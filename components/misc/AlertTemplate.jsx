@@ -11,7 +11,7 @@ const AlertTemplate = ({ style, options, message, close }) => {
       {options.type === 'info' && <FontAwesomeIcon icon={faExclamation} size="lg" className="text-yellow-400" />}
       {options.type === 'success' && <FontAwesomeIcon icon={faCheck} size="lg" className="text-green-400" />}
       {options.type === 'error' && <FontAwesomeIcon icon={faTimes} size="lg" className="text-red-400" />}
-      <p className="ml-2 inline-block">{message}</p>
+      <p className="ml-2 inline-block text-center">{message}</p>
     </div>
   )
 }

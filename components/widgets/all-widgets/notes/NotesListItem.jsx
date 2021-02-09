@@ -1,30 +1,46 @@
 import React, { useState } from 'react'
 import dayjs from 'dayjs'
+import axios from 'axios'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { EditorState, convertFromRaw } from 'draft-js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileImport, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useAlert } from 'react-alert'
+import { mutate as generalMutate } from 'swr'
 
 import styles from 'components/widgets/styles/NotesListItem.module.scss'
 import { Popover, Button } from 'components/ui'
+import useErrorHandler from 'utils/hooks/useErrorHandler'
+import { useAuth } from 'utils/contexts/auth'
 
 dayjs.extend(relativeTime)
 
 // title, updatedAt, content
-const NotesListItem = ({ note, handleNoteClick, lastItemRef, isSelected }) => {
+const NotesListItem = ({ note, mutate, handleNoteClick, lastItemRef, isSelected }) => {
   const [showDeletePopover, setShowDeletePopover] = useState(false)
   const [showMoveModal, setShowMoveModal] = useState(false)
 
-  const { title, updatedAt, content, _id } = note
+  const { user } = useAuth()
+  const errorHandler = useErrorHandler()
+  const alert = useAlert()
 
   const toggleDeletePopover = event => {
     event.stopPropagation()
     setShowDeletePopover(!showDeletePopover)
   }
 
-  const handleDeleteNote = () => {
-    console.log("DELETING NOTE")
+  const handleDeleteNote = async () => {
+    try {
+      await axios.delete(`/notes/${note._id}`)
+      mutate()
+      generalMutate(['/notebooks', user._id])
+      alert.success('Note deleted succesfully!')
+    } catch (error) {
+      errorHandler(error)
+    }
   }
+
+  const { title, updatedAt, content, _id } = note
 
   return (
     <div
@@ -41,9 +57,10 @@ const NotesListItem = ({ note, handleNoteClick, lastItemRef, isSelected }) => {
         <FontAwesomeIcon icon={faFileImport} className="" size="sm" />
         <Popover
           isOpen={showDeletePopover}
+          handleClose={toggleDeletePopover}
           content="Are you sure you want to delete this note?"
           actions={[
-            <Button onClick={handleDeleteNote} size="sm" danger>Yes</Button>,
+            <Button onClick={handleDeleteNote} size="sm">Yes</Button>,
             <Button onClick={toggleDeletePopover} size="sm">No</Button>
           ]}
         >

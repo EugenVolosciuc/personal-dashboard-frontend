@@ -6,17 +6,20 @@ import { useRouter } from 'next/router'
 
 import styles from './styles/SignUpForm.module.scss'
 import { Input, Button } from 'components/ui'
+import { useAlert } from 'react-alert'
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { register, handleSubmit, watch, errors } = useForm()
   const router = useRouter()
+  const alert = useAlert()
 
   const signUp = async values => {
     const { username, email, password } = values
     try {
       setIsLoading(true)
       await axios.post('/users', { username, email, password })
+      alert.success('User created succesfully, you can now log in.')
       setIsLoading(false)
       router.push('/auth/login')
     } catch (error) {
