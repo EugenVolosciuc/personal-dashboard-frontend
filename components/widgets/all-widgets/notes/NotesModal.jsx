@@ -30,7 +30,7 @@ const NoteModal = ({ isOpen, handleClose }) => {
   const { mutate: mutateNotes } = useNotes() // all notes
 
   const swr = useSWRInfinite( // notes per notebook
-    user && notebook ? index => ([`/notes?page=${index + 1}`, notebook._id]) : null,
+    user && notebook ? index => ([`/notes?page=${index + 1}`, notebook._id, user._id]) : null,
     (url, notebookID) => fetcher(
       url, 
       { filters: { notebook: notebookID } }, 

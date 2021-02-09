@@ -32,7 +32,7 @@ export const TodosProvider = ({ children }) => {
     mutate: mutateNonCompletedTodos,
     isValidating: nonCompletedTodosAreValidating,
     error: nonCompletedTodosError
-  } = useSWR(user ? '/todos' : null, url => fetchTodos(url, false))
+  } = useSWR(user ? ['/todos', user._id] : null, url => fetchTodos(url, false))
 
   const {
     data: completedTodos,
@@ -42,7 +42,7 @@ export const TodosProvider = ({ children }) => {
     setSize: setCompletedTodosSize,
     isValidating: completedTodosAreValidating
   } = useSWRInfinite(
-    user ? index => `/todos?page=${index + 1}` : null,
+    user ? index => [`/todos?page=${index + 1}`, user._id] : null,
     url => fetchTodos(url, true)
   )
 

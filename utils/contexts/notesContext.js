@@ -20,7 +20,7 @@ export const NotesProvider = ({children}) => {
   const errorHandler = useErrorHandler()
 
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
-    user ? index => `${URL}?page=${index + 1}` : null,
+    user ? index => [`${URL}?page=${index + 1}`, user._id] : null,
     url => fetcher(url, {}, errorHandler)
   )
 

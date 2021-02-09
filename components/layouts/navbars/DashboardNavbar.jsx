@@ -16,7 +16,7 @@ const DashboardNavbar = () => {
   const handleLogout = async () => {
     try {
       await axios.post('/users/logout')
-      cache.clear()
+      cache.delete()
       router.push('/auth/login')
     } catch (error) {
       console.log("ERROR LOGGING OUT", error)
