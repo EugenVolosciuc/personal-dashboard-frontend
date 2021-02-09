@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { cache } from 'swr'
 
 import styles from '../styles/DashboardNavbar.module.scss'
 import { useAuth } from 'utils/contexts/auth'
@@ -15,6 +16,7 @@ const DashboardNavbar = () => {
   const handleLogout = async () => {
     try {
       await axios.post('/users/logout')
+      cache.clear()
       router.push('/auth/login')
     } catch (error) {
       console.log("ERROR LOGGING OUT", error)
