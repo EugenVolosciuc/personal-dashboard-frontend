@@ -25,9 +25,12 @@
 }
 
 // https://css-tricks.com/line-clampin/
+.content {
+  @apply text-sm flex-grow overflow-hidden;
+}
+
 .fade {
   position: relative;
-  @apply text-sm flex-grow overflow-hidden;
 }
 
 .fade:after {

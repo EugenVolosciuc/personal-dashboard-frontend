@@ -22,7 +22,7 @@ const Popover = ({ isOpen, handleClose, content, actions, children }) => {
       containerClassName="z-50 bg-white shadow p-4 rounded-lg w-64"
       content={
         <div className="flex flex-col justify-between">
-          <div className="mb-4 text-center">
+          <div className={`${actions ? 'mb-4' : ''} text-center`}>
             {typeof content === "string"
               ? <p>{content}</p>
               : content

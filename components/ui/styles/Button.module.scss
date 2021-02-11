@@ -56,5 +56,5 @@
 }
 
 .disabled {
-  @apply bg-secondary text-secondary;
+  @apply bg-secondary text-secondary hover:bg-secondary opacity-60 cursor-not-allowed;
 }

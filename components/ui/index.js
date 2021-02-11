@@ -13,6 +13,7 @@ import Dropdown from './Dropdown'
 import SingleFormInput from './SingleFormInput'
 import Popover from './Popover'
 import Empty from './Empty'
+import Select from './Select'
 
 export {
   Button,
@@ -29,5 +30,6 @@ export {
   Dropdown,
   SingleFormInput,
   Popover,
-  Empty
+  Empty,
+  Select
 }
